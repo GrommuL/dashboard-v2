@@ -1,6 +1,6 @@
 export {
-  RouteConfig,
-  RouteConfigWithoutLayout,
-  RoutePath,
-  RoutePathWithoutLayout
+	RouteConfig,
+	RouteConfigWithoutLayout,
+	RoutePath,
+	RoutePathWithoutLayout
 } from './ui/route-config'
