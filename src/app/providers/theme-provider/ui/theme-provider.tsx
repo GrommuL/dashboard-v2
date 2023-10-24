@@ -1,4 +1,4 @@
-import { LOCAL_STORAGE_THEME_KEY, ThemeContext, ThemeVariants } from 'features/theme'
+import { LOCAL_STORAGE_THEME_KEY, ThemeContext, ThemeVariants } from 'shared/config/theme-config'
 import { FC, ReactNode, useMemo, useState } from 'react'
 
 interface ThemeProviderProps {

@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import { AppLayout } from 'app/layout'
 import { RouteConfig, RouteConfigWithoutLayout } from 'shared/config/route-config'
 import { PageLoader } from 'shared/ui/loaders'
-import { useTheme } from 'features/theme'
+import { useTheme } from 'shared/config/theme-config'
 
 export const AppRouter = () => {
   const { theme } = useTheme()
