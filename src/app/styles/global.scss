@@ -35,3 +35,10 @@ body {
   background: var(--bg-color);
   color: var(--text-color);
 }
+
+/* АКТИВНАЯ ССЫЛКА */
+.active {
+  color: var(--white);
+  background: var(--blue);
+  border-radius: 8px;
+}
