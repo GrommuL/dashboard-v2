@@ -64,10 +64,7 @@ export const RoutePathWithoutLayout: Record<AppRoutesWithoutLayout, string> = {
 	[AppRoutesWithoutLayout.NOT_FOUND]: '*'
 }
 
-export const RouteConfigWithoutLayout: Record<
-	AppRoutesWithoutLayout,
-	RouteProps
-> = {
+export const RouteConfigWithoutLayout: Record<AppRoutesWithoutLayout, RouteProps> = {
 	[AppRoutesWithoutLayout.LOGIN]: {
 		path: RoutePathWithoutLayout.login,
 		element: <LoginPage />
