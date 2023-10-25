@@ -1,0 +1,14 @@
+{
+	"dashboard": {
+		"home": "Главная",
+		"bookings": "Брони",
+		"cabins": "Дома",
+		"users": "Пользователи",
+		"settings": "Настройки"
+	},
+	"theme-switcher": {
+		"dark": "Темная",
+		"light": "Светлая",
+		"theme": "тема"
+	}
+}

@@ -1,0 +1,14 @@
+{
+  "dashboard": {
+    "home": "Home",
+    "bookings": "Bookings",
+    "cabins": "Cabins",
+    "users": "Users",
+    "settings": "Settings"
+  },
+  "theme-switcher": {
+    "dark": "Dark",
+    "light": "Light",
+    "theme": "theme"
+  }
+}
