@@ -1,8 +1,4 @@
-import {
-	LOCAL_STORAGE_THEME_KEY,
-	ThemeContext,
-	ThemeVariants
-} from 'shared/config/theme-config'
+import { LOCAL_STORAGE_THEME_KEY, ThemeContext, ThemeVariants } from 'shared/config/theme-config'
 import { FC, ReactNode, useMemo, useState } from 'react'
 
 interface ThemeProviderProps {
@@ -11,8 +7,7 @@ interface ThemeProviderProps {
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
 	const themeFromLocalStorage =
-		(localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as ThemeVariants) ||
-		ThemeVariants.DARK
+		(localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as ThemeVariants) || ThemeVariants.DARK
 	const [theme, setTheme] = useState<ThemeVariants>(themeFromLocalStorage)
 
 	const defaultThemeProps = useMemo(
@@ -23,9 +18,5 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
 		[theme]
 	)
 
-	return (
-		<ThemeContext.Provider value={defaultThemeProps}>
-			{children}
-		</ThemeContext.Provider>
-	)
+	return <ThemeContext.Provider value={defaultThemeProps}>{children}</ThemeContext.Provider>
 }
