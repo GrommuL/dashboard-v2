@@ -1,32 +1,32 @@
 .nav {
-  width: 100%;
+	width: 100%;
 }
 
 .navList {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	list-style: none;
 }
 .navLink {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 14px 21px;
-  color: var(--text-color);
-  border-radius: 8px;
-  &:hover {
-    transition: all 0.5s ease-in-out;
-    color: var(--white);
-    background: var(--blue);
-    border-radius: 8px;
-  }
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	font-size: 16px;
+	font-weight: 600;
+	padding: 14px 21px;
+	color: var(--text-color);
+	border-radius: 8px;
+	&:hover {
+		transition: all 0.5s ease-in-out;
+		color: var(--white);
+		background: var(--blue-500);
+		border-radius: 8px;
+	}
 }
 
 .navIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
