@@ -2,8 +2,8 @@ import { BiSun } from 'react-icons/bi'
 import { BsMoonStars } from 'react-icons/bs'
 import { Switch } from 'shared/ui/inputs'
 import { useTheme, ThemeVariants } from 'shared/config/theme-config'
-import style from './theme-toggler.module.scss'
 import { useTranslation } from 'react-i18next'
+import style from './theme-toggler.module.scss'
 
 export const ThemeToggler = () => {
 	const { theme, toggleTheme } = useTheme()
