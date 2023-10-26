@@ -1,4 +1,4 @@
-import { Logo } from './logo/logo'
+import { Logo } from 'shared/ui/logo'
 import { Navigation } from './navigation/navigation'
 import { ThemeToggler } from 'features/theme'
 import style from './sidebar.module.scss'
