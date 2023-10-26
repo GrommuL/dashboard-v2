@@ -1,8 +1,11 @@
 .app.light {
-	--logo-color: var(--blue);
+	--logo-color: var(--blue-500);
 	--bg-color: var(--light-blue);
-	--text-color: var(--blue-second);
+	--text-color: var(--light-text-color);
 	--sidebar-bg: var(--white);
 	--header-border-color: var(--light-border);
-	--loader-color: var(--blue);
+	--loader-color: var(--blue-500);
+
+	--button-color: var(--secondary-blue);
+	--button-text-color: var(--primary-blue);
 }
