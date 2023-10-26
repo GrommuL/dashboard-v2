@@ -1,19 +1,41 @@
 :root {
-  --black: #000000;
-  --white: #ffffff;
-  --blue: #0057ff;
-  --dark-blue: #2d3346;
-  --light-blue: #f3f6fb;
-  --light-blue-second: #e5efff;
-  --blue-second: #5d7993;
-  --light-border: #cfdbf1;
-  --dark-border: #282e45;
-  --green: #00cd86;
+	--black: #000000;
+	--white: #ffffff;
+	--blue-100: #ccddff;
+	--blue-200: #99bcff;
+	--blue-300: #669aff;
+	--blue-400: #3379ff;
+	--blue-500: #0057ff;
+	--blue-600: #0046cc;
+	--blue-700: #003499;
+	--blue-800: #002366;
+	--blue-900: #001133;
+	--dark-blue: #2d3346;
+	--green-100: #ccf5e7;
+	--green-200: #99ebcf;
+	--green-300: #66e1b6;
+	--green-400: #33d79e;
+	--green-500: #00cd86;
+	--green-600: #00a46b;
+	--green-700: #007b50;
+	--green-800: #005236;
+	--green-900: #00291b;
+	--light-blue: #f3f6fb;
+	--light-blue-second: #e5efff;
+	--light-border: #cfdbf1;
+	--dark-border: #282e45;
+	--red: #fd3162;
+	--primary-blue: #267af6;
+	--secondary-blue: rgba(104, 164, 255, 0.15);
+	--dark-text-color: #94b3e2;
+	--light-text-color: #5d7993;
 
-  --gradients-dark-blue: linear-gradient(117deg, #1e212d 0%, #21273d 0.01%, #1d202e 91.49%);
-  --gradients-dark-grey: linear-gradient(
-    176deg,
-    rgba(102, 117, 174, 0.1) 1.92%,
-    rgba(43, 62, 105, 0.1) 90.46%
-  );
+	--gradients-dark-blue: linear-gradient(117deg, #1e212d 0%, #21273d 0.01%, #1d202e 91.49%);
+	--gradients-dark-grey: linear-gradient(
+		176deg,
+		rgba(102, 117, 174, 0.1) 1.92%,
+		rgba(43, 62, 105, 0.1) 90.46%
+	);
+
+	--transition: all 0.1s ease-in-out;
 }
