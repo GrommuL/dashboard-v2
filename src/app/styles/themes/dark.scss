@@ -1,8 +1,11 @@
 .app.dark {
-	--logo-color: var(--green);
+	--logo-color: var(--green-500);
 	--bg-color: var(--gradients-dark-blue);
 	--text-color: var(--white);
 	--sidebar-bg: var(--gradients-dark-grey);
 	--header-border-color: var(--dark-border);
-	--loader-color: var(--green);
+	--loader-color: var(--green-400);
+
+	--button-primary-color: var(--secondary-blue);
+	--button-primary-text-color: var(--primary-blue);
 }
