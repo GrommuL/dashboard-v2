@@ -1,4 +1,4 @@
-import { useContext, useState, Dispatch } from 'react'
+import { useContext } from 'react'
 import { ThemeContext } from './theme-context'
 import { LOCAL_STORAGE_THEME_KEY, ThemeVariants } from '../lib/theme'
 
