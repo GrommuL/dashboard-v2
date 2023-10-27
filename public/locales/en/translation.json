@@ -1,14 +1,23 @@
 {
-  "dashboard": {
-    "home": "Home",
-    "bookings": "Bookings",
-    "cabins": "Cabins",
-    "users": "Users",
-    "settings": "Settings"
-  },
-  "theme-switcher": {
-    "dark": "Dark",
-    "light": "Light",
-    "theme": "theme"
-  }
+	"dashboard": {
+		"home": "Home",
+		"bookings": "Bookings",
+		"cabins": "Cabins",
+		"users": "Users",
+		"settings": "Settings"
+	},
+	"theme-switcher": {
+		"dark": "Dark",
+		"light": "Light",
+		"theme": "theme"
+	},
+	"page-error": {
+		"title": "Oops, something went wrong",
+		"description-first-part": "We apologize, we are fixing the problem.",
+		"description-second-part": "Please try again later.",
+		"button": {
+			"back-home": "Back",
+			"reload-page": "Refresh the page"
+		}
+	}
 }
