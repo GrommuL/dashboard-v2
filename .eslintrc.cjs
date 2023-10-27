@@ -13,6 +13,10 @@ module.exports = {
 	rules: {
 		'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
 		'@typescript-eslint/no-unused-vars': 'off',
-		'prettier/prettier': ['error', { endOfLine: 'auto', printWidth: 100 }]
+		'prettier/prettier': ['error', { endOfLine: 'auto', printWidth: 100 }],
+		'i18next/no-literal-string': [
+			'error',
+			{ markupOnly: true, ignoreAttribute: ['data-testid', 'to'] }
+		]
 	}
 }
