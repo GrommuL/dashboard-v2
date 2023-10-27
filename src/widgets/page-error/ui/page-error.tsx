@@ -2,11 +2,13 @@ import { useNavigate } from 'react-router-dom'
 import { Logo } from 'shared/ui/logo'
 import { Button } from 'shared/ui/buttons/button'
 import { RoutePath } from 'shared/config/route-config'
+import { useTranslation } from 'react-i18next'
 import ErrorImage from 'shared/assets/error.png'
 import style from './page-error.module.scss'
 
 export const PageError = () => {
 	const navigate = useNavigate()
+	const { t } = useTranslation()
 
 	const reloadPage = () => {
 		location.reload()
@@ -22,15 +24,17 @@ export const PageError = () => {
 			</div>
 			<div className={style.right}>
 				<div className={style.info}>
-					<h2 className={style.title}>Упс, что-то пошло не так</h2>
+					<h2 className={style.title}>{t('page-error.title')}</h2>
 					<p className={style.description}>
-						Приносим извинения, мы исправляем проблему. <br /> Пожалуйста, попробуйте еще раз чуть
-						позже
+						{t('page-error.description-first-part')} <br />{' '}
+						{t('page-error.description-second-part')}
 					</p>
 				</div>
 				<div className={style.buttons}>
-					<Button onClick={() => navigate(RoutePath.dashboard)}>Назад</Button>
-					<Button onClick={reloadPage}>Обновить страницу</Button>
+					<Button onClick={() => navigate(RoutePath.dashboard)}>
+						{t('page-error.button.back-home')}
+					</Button>
+					<Button onClick={reloadPage}>{t('page-error.button.reload-page')}</Button>
 				</div>
 			</div>
 		</section>
