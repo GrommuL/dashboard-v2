@@ -9,7 +9,7 @@ import {
 import { BuildOptions } from './types/config'
 
 export const buildPlugins = ({ paths, isDev }: BuildOptions): WebpackPluginInstance[] => {
-	return [
+	const plugins = [
 		new HTMLWebpackPlugin({ template: paths.html }),
 		new ProgressPlugin(),
 		new MiniCssExtractPlugin({
@@ -18,7 +18,11 @@ export const buildPlugins = ({ paths, isDev }: BuildOptions): WebpackPluginInsta
 		}),
 		new DefinePlugin({
 			__IS_DEV__: JSON.stringify(isDev)
-		}),
-		new HotModuleReplacementPlugin()
+		})
 	]
+
+	if (isDev) {
+		plugins.push(new HotModuleReplacementPlugin())
+	}
+	return plugins
 }
