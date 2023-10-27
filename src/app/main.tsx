@@ -5,7 +5,7 @@ import { AppRouter } from './providers/app-router'
 import { ThemeProvider } from './providers/theme-provider'
 import { ErrorBoundary } from './providers/error-boundary'
 import './styles/global.scss'
-import '../shared/config/i18n-config'
+import '../shared/config/i18n-config/model/i18n-config'
 
 const container = document.getElementById('root')
 const root = createRoot(container)
