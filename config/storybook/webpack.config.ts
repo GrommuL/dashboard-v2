@@ -10,6 +10,7 @@ export default ({ config }: { config: Configuration }) => {
 		html: '',
 		src: path.resolve(__dirname, '..', '..', 'src')
 	}
+
 	config.resolve.modules.push(paths.src)
 	config.resolve.extensions.push('.ts', '.tsx')
 
