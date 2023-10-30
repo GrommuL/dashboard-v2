@@ -16,11 +16,17 @@ export default (env: BuildEnv) => {
 
 	const isDev = mode === 'development'
 
+	const isProduction = env.NODE_ENV === 'production'
+	const envFile = isProduction ? '.env.production' : '.env.development'
+	const NODE_ENV = env.NODE_ENV
+
 	const config: Configuration = buildWebpackConfig({
 		mode,
 		paths,
 		isDev,
-		port: PORT
+		port: PORT,
+		envFile,
+		NODE_ENV
 	})
 
 	return config
