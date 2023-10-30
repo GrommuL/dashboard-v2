@@ -42,3 +42,28 @@ body {
 	background: var(--blue-500);
 	border-radius: 8px;
 }
+
+input[type='number'] {
+	-moz-appearance: none;
+}
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+::-webkit-scrollbar {
+	width: 7px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--blue-500);
+	border-radius: 150px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--blue-500);
+}
