@@ -1,3 +1,16 @@
 {
-	"title": "All cabins"
+	"title": "All cabins",
+	"table": {
+		"cabin": "Cabin",
+		"capacity": "Capacity",
+		"price": "Price",
+		"discount": "Discount",
+		"error": "Can not load cabins"
+	},
+	"row": {
+		"capacity": {
+			"left": "Fits up to",
+			"right": "guests"
+		}
+	}
 }
