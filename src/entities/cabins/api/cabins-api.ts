@@ -1,5 +1,5 @@
 import { instance } from 'shared/config/axios-config'
-import { CabinType } from '../types/cabinsType'
+import { CabinType } from '../types/cabins-type'
 
 export const getCabins = async (): Promise<CabinType[]> => {
 	const { data } = await instance.get('cabins')
