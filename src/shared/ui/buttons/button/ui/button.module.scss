@@ -18,7 +18,7 @@
 	color: var(--white);
 	transition: var(--transition);
 	&:hover {
-		transform: scale(1.01);
+		background: var(--red-hover);
 	}
 	&:active {
 		transform: translate(1px, 1px);
@@ -36,7 +36,7 @@
 	color: var(--button-text-color);
 	transition: var(--transition);
 	&:hover {
-		transform: scale(1.01);
+		border-color: var(--blue-500);
 	}
 	&:active {
 		transform: translate(1px, 1px);
@@ -55,7 +55,8 @@
 	color: var(--button-text-color);
 	transition: var(--transition);
 	&:hover {
-		transform: scale(1.01);
+		background: var(--blue-500);
+		color: var(--white);
 	}
 	&:active {
 		transform: translate(1px, 1px);
@@ -73,7 +74,7 @@
 	color: var(--button-text-color);
 	transition: var(--transition);
 	&:hover {
-		transform: scale(1.01);
+		background: var(--button-color);
 	}
 	&:active {
 		transform: translate(1px, 1px);
