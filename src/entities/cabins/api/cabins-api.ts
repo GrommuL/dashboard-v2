@@ -2,26 +2,51 @@ import { instance } from 'shared/config/axios-config'
 import { CabinType } from '../types/cabins-type'
 
 export const getCabins = async (): Promise<CabinType[]> => {
-	const { data } = await instance.get('cabins')
-	return data
+	try {
+		const { data } = await instance.get('cabins')
+		return data
+	} catch (error) {
+		console.log(error)
+		throw new Error('Cabins could not be loaded')
+	}
 }
 
 export const getCabinById = async (id: number) => {
-	const { data } = await instance.get(`cabins/${id}`)
-	return data
+	try {
+		const { data } = await instance.get(`cabins/${id}`)
+		return data
+	} catch (error) {
+		console.log(error)
+		throw new Error('Cabin could not be loaded')
+	}
 }
 
 export const deleteCabin = async (id: number) => {
-	const { data } = await instance.delete(`cabins/${id}`)
-	return data
+	try {
+		const { data } = await instance.delete(`cabins/${id}`)
+		return data
+	} catch (error) {
+		console.log(error)
+		throw new Error('Cabin could not be deleted')
+	}
 }
 
 export const createCabin = async (cabin: CabinType) => {
-	const { data } = await instance.post('cabins', cabin)
-	return data
+	try {
+		const { data } = await instance.post('cabins', cabin)
+		return data
+	} catch (error) {
+		console.log(error)
+		throw new Error('Cabin could not be created')
+	}
 }
 
 export const editCabin = async (cabin: CabinType, id: number) => {
-	const { data } = await instance.patch(`cabins/${id}`, cabin)
-	return data
+	try {
+		const { data } = await instance.patch(`cabins/${id}`, cabin)
+		return data
+	} catch (error) {
+		console.log(error)
+		throw new Error('Cabin could not be edited')
+	}
 }
