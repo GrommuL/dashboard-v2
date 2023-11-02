@@ -1,0 +1,26 @@
+.button {
+	background: var(--sidebar-bg);
+	border: none;
+	border-radius: 8px;
+	font-weight: 600;
+	font-size: 16px;
+	padding: 7px 12px;
+	color: var(--text-color);
+	cursor: pointer;
+	box-shadow: var(--drop-shadow-black);
+
+	&:hover {
+		transition: all 0.5s ease-in-out;
+		background: var(--logo-color);
+		color: var(--filter-text-color);
+	}
+
+	&:disabled {
+		cursor: auto;
+	}
+}
+
+.button_active {
+	background: var(--logo-color);
+	color: var(--filter-text-color);
+}
