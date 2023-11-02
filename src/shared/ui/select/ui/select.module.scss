@@ -1,0 +1,12 @@
+.select {
+	font-size: 15px;
+	padding: 7px 12px;
+	border: 1px solid var(--header-border-color);
+	border-radius: 8px;
+	background: var(--select-bg-color);
+	font-weight: 500;
+	box-shadow: var(--drop-shadow-black);
+	color: var(--text-color);
+	outline: none;
+	cursor: pointer;
+}
