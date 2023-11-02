@@ -1,7 +1,9 @@
 import { useTranslation } from 'react-i18next'
 import { CabinTable } from 'widgets/cabin-table'
 import style from './cabins-page.module.scss'
-import { Button } from 'shared/ui/buttons/button'
+import { Filter } from 'features/filter'
+import { cabinFilterOptions, cabinSortOptions } from 'entities/cabins'
+import { SortBy } from 'features/sort'
 
 const CabinsPage = () => {
 	const { t } = useTranslation('cabins')
@@ -10,15 +12,13 @@ const CabinsPage = () => {
 		<div className={style.cabins}>
 			<div className={style.cabinsHeader}>
 				<h2 className={style.heading}>{t('title')}</h2>
-				<div className={style.menu}>Filter/Sort</div>
+				<div className={style.menu}>
+					<Filter filterField='discount' options={cabinFilterOptions} />
+					<SortBy sortOptions={cabinSortOptions} />
+				</div>
 			</div>
 			<div className={style.row}>
 				<CabinTable />
-				<div className={style.createCabin}>
-					<Button variant='default' onClick={() => console.log('first')}>
-						{t('table.add_button')}
-					</Button>
-				</div>
 			</div>
 		</div>
 	)
