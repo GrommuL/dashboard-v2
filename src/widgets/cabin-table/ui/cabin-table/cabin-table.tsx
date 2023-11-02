@@ -5,6 +5,7 @@ import { Button } from 'shared/ui/buttons/button'
 import { useTranslation } from 'react-i18next'
 import style from './cabin-table.module.scss'
 import { useFilterCabin } from 'features/cabin/filter-cabin'
+import { Modal } from 'widgets/modal'
 
 export const CabinTable = () => {
 	const { t } = useTranslation('cabins')
@@ -24,6 +25,22 @@ export const CabinTable = () => {
 		)
 	}
 
+	if (!sortedCabins.length) {
+		return (
+			<div className={style.emptyCabins}>
+				<span>{t('table.no-cabins')}</span>
+				<Modal>
+					<Modal.Open opens='cabin-form'>
+						<Button variant='primary'>{t('table.add_button')}</Button>
+					</Modal.Open>
+					<Modal.Window name='cabin-form'>
+						<div>form</div>
+					</Modal.Window>
+				</Modal>
+			</div>
+		)
+	}
+
 	return (
 		<>
 			<div className={style.table}>
@@ -37,11 +54,14 @@ export const CabinTable = () => {
 				</div>
 				{sortedCabins?.map((cabin) => <CabinRow key={cabin.id} cabin={cabin} />)}
 			</div>
-			<div className={style.createCabin}>
-				<Button variant='default' onClick={() => console.log('first')}>
-					{t('table.add_button')}
-				</Button>
-			</div>
+			<Modal>
+				<Modal.Open opens='cabin-form'>
+					<Button variant='default'>{t('table.add_button')}</Button>
+				</Modal.Open>
+				<Modal.Window name='cabin-form'>
+					<div>form</div>
+				</Modal.Window>
+			</Modal>
 		</>
 	)
 }
