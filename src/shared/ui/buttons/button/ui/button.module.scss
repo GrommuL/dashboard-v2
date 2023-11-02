@@ -73,6 +73,7 @@
 	background: transparent;
 	color: var(--button-text-color);
 	transition: var(--transition);
+	padding: 8px 12px;
 	&:hover {
 		background: var(--button-color);
 	}
