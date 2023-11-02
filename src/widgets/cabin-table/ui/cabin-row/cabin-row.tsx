@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { formatCurrency } from 'shared/lib/format-currency'
 import { CabinType } from 'entities/cabins'
 import style from './cabin-row.module.scss'
+import { DeleteCabinButton } from 'features/cabin/delete-cabin'
 
 interface CabinRowProps {
 	cabin: CabinType
@@ -28,6 +29,9 @@ export const CabinRow = ({ cabin }: CabinRowProps) => {
 				<div className={style.price}>{formatCurrency(cabin.regularPrice)}</div>
 				<div className={style.discount}>
 					{cabin.discount > 0 ? formatCurrency(cabin.discount) : '---'}
+				</div>
+				<div className={style.cabinButtons}>
+					{cabin.id && <DeleteCabinButton cabinId={cabin.id} />}
 				</div>
 			</div>
 		</>
