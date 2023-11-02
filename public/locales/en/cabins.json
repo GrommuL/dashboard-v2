@@ -6,6 +6,7 @@
 		"price": "Price",
 		"discount": "Discount",
 		"error": "Can not load cabins",
+		"no-cabins": "The list of cabins is empty. Add a cabin for rent",
 		"add_button": "Add new cabin"
 	},
 	"row": {
