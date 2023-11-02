@@ -8,7 +8,7 @@ import { useFilterCabin } from 'features/cabin/filter-cabin'
 
 export const CabinTable = () => {
 	const { t } = useTranslation('cabins')
-	const { isLoading, error, refetch, filteredCabins } = useFilterCabin()
+	const { isLoading, error, refetch, sortedCabins } = useFilterCabin()
 
 	if (isLoading) return <Loader />
 
@@ -35,7 +35,7 @@ export const CabinTable = () => {
 					<div>{t('table.discount')}</div>
 					<div></div>
 				</div>
-				{filteredCabins?.map((cabin) => <CabinRow key={cabin.id} cabin={cabin} />)}
+				{sortedCabins?.map((cabin) => <CabinRow key={cabin.id} cabin={cabin} />)}
 			</div>
 			<div className={style.createCabin}>
 				<Button variant='default' onClick={() => console.log('first')}>
