@@ -1,0 +1,10 @@
+.table {
+	border: 1px solid var(--header-border-color);
+	background: var(--sidebar-bg);
+	font-size: 20px;
+	border-radius: 7px;
+	overflow: hidden;
+	box-shadow: var(--drop-shadow-black);
+	width: 100%;
+	user-select: none;
+}
