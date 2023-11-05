@@ -1,9 +1,12 @@
-import { HiOutlineHomeModern } from 'react-icons/hi2'
+import { HiOutlineHomeModern, HiOutlineTrash } from 'react-icons/hi2'
 import { useTranslation } from 'react-i18next'
 import { formatCurrency } from 'shared/lib/format-currency'
 import { CabinType } from 'entities/cabins'
+import { Modal } from 'shared/ui/modal'
+import { Button } from 'shared/ui/buttons/button'
+import { useDeleteCabin } from 'features/cabin/delete-cabin/lib/use-delete-cabin'
+import { ConfirmDelete } from 'features/confirm-delete'
 import style from './cabin-row.module.scss'
-import { DeleteCabinButton } from 'features/cabin/delete-cabin'
 
 interface CabinRowProps {
 	cabin: CabinType
@@ -11,6 +14,7 @@ interface CabinRowProps {
 
 export const CabinRow = ({ cabin }: CabinRowProps) => {
 	const { t } = useTranslation('cabins')
+	const { deleteCabinById } = useDeleteCabin()
 
 	return (
 		<>
@@ -31,7 +35,22 @@ export const CabinRow = ({ cabin }: CabinRowProps) => {
 					{cabin.discount > 0 ? formatCurrency(cabin.discount) : '---'}
 				</div>
 				<div className={style.cabinButtons}>
-					{cabin.id && <DeleteCabinButton cabinId={cabin.id} />}
+					{cabin.id && (
+						<Modal>
+							<Modal.Open opens='delete-cabin'>
+								<Button variant='empty'>
+									<HiOutlineTrash size={25} />
+								</Button>
+							</Modal.Open>
+							<Modal.Window name='delete-cabin'>
+								<ConfirmDelete
+									deleteName={cabin.name}
+									disabled={false}
+									onConfirm={() => deleteCabinById(cabin.id)}
+								/>
+							</Modal.Window>
+						</Modal>
+					)}
 				</div>
 			</div>
 		</>
