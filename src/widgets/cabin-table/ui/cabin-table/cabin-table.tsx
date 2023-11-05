@@ -5,7 +5,9 @@ import { Button } from 'shared/ui/buttons/button'
 import { useTranslation } from 'react-i18next'
 import style from './cabin-table.module.scss'
 import { useFilterCabin } from 'features/cabin/filter-cabin'
-import { Modal } from 'widgets/modal'
+import { Modal } from 'shared/ui/modal'
+import { Table } from 'shared/ui/table'
+import { CabinType } from 'entities/cabins'
 
 export const CabinTable = () => {
 	const { t } = useTranslation('cabins')
@@ -30,10 +32,10 @@ export const CabinTable = () => {
 			<div className={style.emptyCabins}>
 				<span>{t('table.no-cabins')}</span>
 				<Modal>
-					<Modal.Open opens='cabin-form'>
+					<Modal.Open opens='cabin-form-empty'>
 						<Button variant='primary'>{t('table.add_button')}</Button>
 					</Modal.Open>
-					<Modal.Window name='cabin-form'>
+					<Modal.Window name='cabin-form-empty'>
 						<div>form</div>
 					</Modal.Window>
 				</Modal>
@@ -43,17 +45,20 @@ export const CabinTable = () => {
 
 	return (
 		<>
-			<div className={style.table}>
-				<div className={style.tableHeader}>
+			<Table>
+				<Table.Header columns='0.6fr 1.8fr 2.2fr 1fr 1fr 1fr'>
 					<div></div>
 					<div>{t('table.cabin')}</div>
 					<div>{t('table.capacity')}</div>
 					<div>{t('table.price')}</div>
 					<div>{t('table.discount')}</div>
 					<div></div>
-				</div>
-				{sortedCabins?.map((cabin) => <CabinRow key={cabin.id} cabin={cabin} />)}
-			</div>
+				</Table.Header>
+				<Table.Body
+					data={sortedCabins}
+					render={(cabin: CabinType) => <CabinRow key={cabin.id} cabin={cabin} />}
+				/>
+			</Table>
 			<Modal>
 				<Modal.Open opens='cabin-form'>
 					<Button variant='default'>{t('table.add_button')}</Button>
