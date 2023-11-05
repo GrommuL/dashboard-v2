@@ -19,5 +19,12 @@
 			"back-home": "Back",
 			"reload-page": "Refresh the page"
 		}
+	},
+	"confirm-delete": {
+		"title": "Delete",
+		"question-first-part": "Are you sure you want to delete this",
+		"question-second-part": "permanently? This action cannot be undone.",
+		"cancel-button": "Cancel",
+		"delete-button": "Delete"
 	}
 }
