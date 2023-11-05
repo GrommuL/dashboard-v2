@@ -19,5 +19,12 @@
 			"back-home": "Назад",
 			"reload-page": "Обновить страницу"
 		}
+	},
+	"confirm-delete": {
+		"title": "Удаление",
+		"question-first-part": "Вы уверены, что хотите удалить",
+		"question-second-part": "? Удаление нельзя будет отменить.",
+		"cancel-button": "Отменить",
+		"delete-button": "Удалить"
 	}
 }
