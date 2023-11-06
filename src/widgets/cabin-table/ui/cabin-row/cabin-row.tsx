@@ -1,4 +1,4 @@
-import { HiOutlineHomeModern, HiOutlineTrash } from 'react-icons/hi2'
+import { HiOutlineHomeModern, HiOutlineTrash, HiOutlinePencil } from 'react-icons/hi2'
 import { useTranslation } from 'react-i18next'
 import { formatCurrency } from 'shared/lib/format-currency'
 import { CabinType } from 'entities/cabins'
@@ -39,7 +39,12 @@ export const CabinRow = ({ cabin }: CabinRowProps) => {
 						<Modal>
 							<Modal.Open opens='delete-cabin'>
 								<Button variant='empty'>
-									<HiOutlineTrash size={25} />
+									<HiOutlineTrash size={20} />
+								</Button>
+							</Modal.Open>
+							<Modal.Open opens='edit-cabin'>
+								<Button variant='empty'>
+									<HiOutlinePencil size={20} />
 								</Button>
 							</Modal.Open>
 							<Modal.Window name='delete-cabin'>
@@ -48,6 +53,9 @@ export const CabinRow = ({ cabin }: CabinRowProps) => {
 									disabled={false}
 									onConfirm={() => deleteCabinById(cabin.id)}
 								/>
+							</Modal.Window>
+							<Modal.Window name='edit-cabin'>
+								<div>edit</div>
 							</Modal.Window>
 						</Modal>
 					)}
