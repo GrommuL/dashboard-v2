@@ -121,7 +121,9 @@ export const CreateCabinForm = ({ onCloseModal }: CreateCabinFormProps) => {
 				label='Image'
 				error={errors.image}
 			/>
-			<Button type='submit'>Create</Button>
+			<Button size='fixed' type='submit'>
+				Create
+			</Button>
 		</form>
 	)
 }
