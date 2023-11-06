@@ -6,6 +6,7 @@ import { Modal } from 'shared/ui/modal'
 import { Button } from 'shared/ui/buttons/button'
 import { useDeleteCabin } from 'features/cabin/delete-cabin/lib/use-delete-cabin'
 import { ConfirmDelete } from 'features/confirm-delete'
+import { EditCabinForm } from 'features/cabin/edit-cabin'
 import style from './cabin-row.module.scss'
 
 interface CabinRowProps {
@@ -55,7 +56,7 @@ export const CabinRow = ({ cabin }: CabinRowProps) => {
 								/>
 							</Modal.Window>
 							<Modal.Window name='edit-cabin'>
-								<div>edit</div>
+								<EditCabinForm editToCabin={cabin} />
 							</Modal.Window>
 						</Modal>
 					)}
