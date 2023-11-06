@@ -3,11 +3,12 @@ import { TfiReload } from 'react-icons/tfi'
 import { Loader } from 'shared/ui/loaders'
 import { Button } from 'shared/ui/buttons/button'
 import { useTranslation } from 'react-i18next'
-import style from './cabin-table.module.scss'
 import { useFilterCabin } from 'features/cabin/filter-cabin'
 import { Modal } from 'shared/ui/modal'
 import { Table } from 'shared/ui/table'
 import { CabinType } from 'entities/cabins'
+import { CreateCabinForm } from 'features/cabin/create-cabin'
+import style from './cabin-table.module.scss'
 
 export const CabinTable = () => {
 	const { t } = useTranslation('cabins')
@@ -59,14 +60,16 @@ export const CabinTable = () => {
 					render={(cabin: CabinType) => <CabinRow key={cabin.id} cabin={cabin} />}
 				/>
 			</Table>
-			<Modal>
-				<Modal.Open opens='cabin-form'>
-					<Button variant='default'>{t('table.add_button')}</Button>
-				</Modal.Open>
-				<Modal.Window name='cabin-form'>
-					<div>form</div>
-				</Modal.Window>
-			</Modal>
+			<div className={style.createCabin}>
+				<Modal>
+					<Modal.Open opens='cabin-form'>
+						<Button variant='default'>{t('table.add_button')}</Button>
+					</Modal.Open>
+					<Modal.Window name='cabin-form'>
+						<CreateCabinForm />
+					</Modal.Window>
+				</Modal>
+			</div>
 		</>
 	)
 }
