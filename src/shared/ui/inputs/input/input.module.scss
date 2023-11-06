@@ -1,0 +1,32 @@
+.box {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	height: 88px;
+}
+.label {
+	font-size: 14px;
+}
+.input {
+	outline: none;
+	border-radius: 8px;
+	border: 1px solid transparent;
+	padding: 11px 15px;
+	font-weight: 400;
+	font-size: 15px;
+	color: var(--modal-text-color);
+	height: 40px;
+	background: var(--header-border-color);
+
+	&::placeholder {
+		color: var(--modal-text-color);
+	}
+}
+.error {
+	border: 1px solid var(--red);
+}
+
+.errorMessage {
+	font-size: 13px;
+	color: var(--red);
+}
