@@ -41,7 +41,7 @@ export const createCabin = async (cabin: CabinType) => {
 	}
 }
 
-export const editCabin = async (cabin: CabinType, id: number) => {
+export const editCabin = async ({ cabin, id }: { cabin: CabinType; id: number }) => {
 	try {
 		const { data } = await instance.patch(`cabins/${id}`, cabin)
 		return data
