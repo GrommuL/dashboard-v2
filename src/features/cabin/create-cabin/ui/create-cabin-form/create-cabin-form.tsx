@@ -8,11 +8,11 @@ import { createCabinSchema } from 'entities/cabins/lib/schema/createCabinSchema'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import style from './create-cabin-form.module.scss'
 
-interface CabinFormProps {
+interface CreateCabinFormProps {
 	onCloseModal?: () => void
 }
 
-export const CabinForm = ({ onCloseModal }: CabinFormProps) => {
+export const CreateCabinForm = ({ onCloseModal }: CreateCabinFormProps) => {
 	const {
 		register,
 		formState: { errors },
