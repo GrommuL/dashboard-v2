@@ -1,0 +1,29 @@
+.tag {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: fit-content;
+	text-transform: uppercase;
+	padding: 7px 14px;
+	font-weight: 600;
+	font-size: 12px;
+	color: var(--white);
+	border-radius: 24px;
+}
+
+.unconfirmed {
+	background: var(--light-text-color);
+}
+
+.confirmed {
+	background: var(--blue-400);
+}
+
+.checkedin {
+	background: var(--green-500);
+	color: var(--black);
+}
+
+.checkedout {
+	background: var(--red);
+}
