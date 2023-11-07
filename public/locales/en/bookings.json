@@ -1,0 +1,15 @@
+{
+	"bookings-page-title": "All bookings",
+	"bookings-error": {
+		"title": "Can not load bookings",
+		"button": "Reload"
+	},
+	"bookings-empty": "No data to show at the moment",
+	"bookings-table-header": {
+		"cabin": "Cabin",
+		"guests": "Guests",
+		"dates": "Dates",
+		"status": "Status",
+		"amount": "Amount"
+	}
+}

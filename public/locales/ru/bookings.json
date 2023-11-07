@@ -1,0 +1,15 @@
+{
+	"bookings-page-title": "Все брони",
+	"bookings-error": {
+		"title": "Не могу загрузить брони",
+		"button": "Перезагрузить"
+	},
+	"bookings-empty": "Список брони пуст",
+	"bookings-table-header": {
+		"cabin": "Дом",
+		"guests": "Гости",
+		"dates": "Даты",
+		"status": "Статус",
+		"amount": "Сумма"
+	}
+}
