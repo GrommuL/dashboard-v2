@@ -2,3 +2,4 @@ export { createCabin, deleteCabin, editCabin, getCabinById, getCabins } from './
 export { CabinType } from './types/cabins-type'
 export { cabinFilterOptions } from './lib/cabin-fIlters-options'
 export { cabinSortOptions } from './lib/cabin-sort-options'
+export { useCreateCabinSchema } from './lib/schema/createCabinSchema'
