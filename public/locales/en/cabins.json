@@ -14,5 +14,37 @@
 			"left": "Fits up to",
 			"right": "guests"
 		}
+	},
+	"form": {
+		"create-success": "Cabin is successfully created",
+		"create-error": "Could not create a cabin",
+		"edit-success": "Cabin is successfully edited",
+		"edit-error": "Could not edit a cabin",
+		"inputs": {
+			"name-label": "Cabin name",
+			"name-placeholder": "Name",
+			"description-label": "Cabin description",
+			"description-placeholder": "Write a description of the cabin...",
+			"max-capacity-label": "Maximum capacity",
+			"max-capacity-placeholder": "Capacity",
+			"regular-price-label": "Regular price",
+			"regular-price-placeholder": "Price",
+			"discount-label": "Discount",
+			"discount-placeholder": "Discount",
+			"image-label": "Image",
+			"image-placeholder": "Insert a link to the image"
+		},
+		"create-button": "Create",
+		"edit-button": "Edit",
+		"validate": {
+			"name": "Enter the name of the cabin",
+			"description": "Enter the description of the cabin",
+			"max-capacity-min": "Maximum capacity should be at least 1",
+			"max-capacity-positive": "Maximum capacity should be a bigger than 0",
+			"regular-price-positive": "Regular price should be a bigger than 0",
+			"discount-nonnegative": "Value should be a positive number",
+			"discount-less-than-regular-price": "Discount should be less than regular price"
+		},
+		"cancel-button": "Cancel"
 	}
 }

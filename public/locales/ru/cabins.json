@@ -14,5 +14,37 @@
 			"left": "Вмещает до",
 			"right": "гостей(я)"
 		}
+	},
+	"form": {
+		"create-success": "Дом успешно добавлен",
+		"create-error": "Не получилось добавить дом",
+		"edit-success": "Дом успешно изменен",
+		"edit-error": "Не получилось изменить дом",
+		"inputs": {
+			"name-label": "Название дома",
+			"name-placeholder": "Название",
+			"description-label": "Описание дома",
+			"description-placeholder": "Опишите дом...",
+			"max-capacity-label": "Максимальная вместимость",
+			"max-capacity-placeholder": "Вместимость",
+			"regular-price-label": "Цена",
+			"regular-price-placeholder": "Цена",
+			"discount-label": "Скидка",
+			"discount-placeholder": "Скидка",
+			"image-label": "Изображение дома",
+			"image-placeholder": "Вставьте ссылку на изображение"
+		},
+		"create-button": "Добавить",
+		"edit-button": "Изменить",
+		"validate": {
+			"name": "Введите название дома",
+			"description": "Укажите описание дома",
+			"max-capacity-min": "Максимальная вместимость должна быть не меньше 1",
+			"max-capacity-positive": "Максимальная вместимость должна быть больше 0",
+			"regular-price-positive": "Цена должна быть больше 0",
+			"discount-nonnegative": "Значение скидки не должно быть отрицательным",
+			"discount-less-than-regular-price": "Скидка должна быть меньше цены"
+		},
+		"cancel-button": "Отменить"
 	}
 }
