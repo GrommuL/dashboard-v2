@@ -3,16 +3,18 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Input, TextArea } from 'shared/ui/inputs'
 import { Button } from 'shared/ui/buttons/button'
-import { CabinType, createCabin } from 'entities/cabins'
-import { createCabinSchema } from 'entities/cabins/lib/schema/createCabinSchema'
+import { CabinType, createCabin, useCreateCabinSchema } from 'entities/cabins'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import style from './create-cabin-form.module.scss'
+import { useTranslation } from 'react-i18next'
 
 interface CreateCabinFormProps {
 	onCloseModal?: () => void
 }
 
 export const CreateCabinForm = ({ onCloseModal }: CreateCabinFormProps) => {
+	const { t } = useTranslation('cabins')
+	const { createCabinSchema } = useCreateCabinSchema()
 	const {
 		register,
 		formState: { errors },
@@ -28,7 +30,7 @@ export const CreateCabinForm = ({ onCloseModal }: CreateCabinFormProps) => {
 		mutationKey: ['cabins'],
 		mutationFn: createCabin,
 		onSuccess: () => {
-			toast.success('Cabin is successfully created')
+			toast.success(t('form.create-success'))
 			reset()
 			onCloseModal()
 			queryClient.invalidateQueries({
@@ -36,7 +38,7 @@ export const CreateCabinForm = ({ onCloseModal }: CreateCabinFormProps) => {
 			})
 		},
 		onError: () => {
-			toast.error('Could not create a cabin')
+			toast.error(t('form.create-error'))
 		}
 	})
 
@@ -53,20 +55,20 @@ export const CreateCabinForm = ({ onCloseModal }: CreateCabinFormProps) => {
 			<Input
 				inputProps={{
 					...register('name', { required: true }),
-					placeholder: 'Name',
+					placeholder: `${t('form.inputs.name-placeholder')}`,
 					type: 'text'
 				}}
 				registerId='name'
-				label='Cabin name'
+				label={t('form.inputs.name-label')}
 				error={errors.name}
 			/>
 			<TextArea
 				textAreaProps={{
 					...register('description', { required: true }),
-					placeholder: 'Write a description of the cabin...'
+					placeholder: `${t('form.inputs.description-placeholder')}`
 				}}
 				registerId='description'
-				label='Cabin description'
+				label={t('form.inputs.description-label')}
 				error={errors.description}
 			/>
 			<Input
@@ -76,11 +78,11 @@ export const CreateCabinForm = ({ onCloseModal }: CreateCabinFormProps) => {
 						valueAsNumber: true,
 						validate: (value) => typeof value === 'number' && value >= 0
 					}),
-					placeholder: 'Capacity',
+					placeholder: `${t('form.inputs.max-capacity-placeholder')}`,
 					type: 'number'
 				}}
 				registerId='maxCapacity'
-				label='Maximum capacity'
+				label={t('form.inputs.max-capacity-label')}
 				error={errors.maxCapacity}
 			/>
 			<Input
@@ -90,11 +92,11 @@ export const CreateCabinForm = ({ onCloseModal }: CreateCabinFormProps) => {
 						valueAsNumber: true,
 						validate: (value) => typeof value === 'number' && value >= 0
 					}),
-					placeholder: 'Price',
+					placeholder: `${t('form.inputs.regular-price-placeholder')}`,
 					type: 'number'
 				}}
 				registerId='regularPrice'
-				label='Regular price'
+				label={t('form.inputs.regular-price-label')}
 				error={errors.regularPrice}
 			/>
 			<Input
@@ -104,26 +106,31 @@ export const CreateCabinForm = ({ onCloseModal }: CreateCabinFormProps) => {
 						valueAsNumber: true,
 						validate: (value) => typeof value === 'number' && value >= 0
 					}),
-					placeholder: 'Discount',
+					placeholder: `${t('form.inputs.discount-placeholder')}`,
 					type: 'number'
 				}}
 				registerId='discount'
-				label='Discount'
+				label={t('form.inputs.discount-label')}
 				error={errors.discount}
 			/>
 			<Input
 				inputProps={{
 					...register('image'),
-					placeholder: 'Insert a link to the image',
+					placeholder: `${t('form.inputs.image-placeholder')}`,
 					type: 'text'
 				}}
 				registerId='image'
-				label='Image'
+				label={t('form.inputs.image-label')}
 				error={errors.image}
 			/>
-			<Button size='fixed' type='submit'>
-				Create
-			</Button>
+			<div className={style.buttons}>
+				<Button variant='primary' size='fixed' type='submit' onClick={onCloseModal}>
+					{t('form.cancel-button')}
+				</Button>
+				<Button size='fixed' type='submit'>
+					{t('form.create-button')}
+				</Button>
+			</div>
 		</form>
 	)
 }
