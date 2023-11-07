@@ -1,0 +1,31 @@
+.bookings {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.bookingsHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.heading {
+	font-size: 24px;
+	font-weight: 600;
+	color: var(--cabins-page-title);
+}
+
+.menu {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
