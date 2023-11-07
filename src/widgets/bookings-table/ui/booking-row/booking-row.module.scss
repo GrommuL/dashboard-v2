@@ -1,0 +1,88 @@
+.tableRow {
+	display: grid;
+	grid-template-columns: 2fr 1.8fr 1.8fr 1fr 1fr;
+	column-gap: 32px;
+	align-items: center;
+	padding: 15px 38px;
+	color: inherit;
+	transition: all 0.3s ease-in;
+
+	&:not(:last-child) {
+		border-bottom: 1px solid var(--header-border-color);
+	}
+
+	&:hover {
+		background: var(--secondary-blue);
+	}
+}
+
+.name {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.fullName {
+	font-weight: 500;
+}
+
+.email {
+	font-size: 14px;
+	color: var(--booking-text-color);
+}
+.cabin {
+	font-size: 20px;
+	font-weight: 600;
+	color: var(--text-color);
+}
+
+.date {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.isToday {
+	font-size: 16px;
+}
+
+.reservation {
+	font-size: 14px;
+	color: var(--booking-text-color);
+}
+
+.price {
+	font-weight: 600;
+}
+
+.discount {
+	font-weight: 500;
+	color: var(--green-500);
+}
+
+.cabinButtons {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.image {
+	display: block;
+	width: 60px;
+	aspect-ratio: 3 / 2;
+	object-fit: cover;
+	object-position: center;
+	transform: scale(1.4) translateX(-7px);
+}
+.defaultImage {
+	width: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.cabinInfo {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
