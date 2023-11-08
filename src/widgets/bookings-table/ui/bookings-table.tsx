@@ -7,9 +7,11 @@ import { TfiReload } from 'react-icons/tfi'
 import { Table } from 'shared/ui/table'
 import { useFilterBookings } from 'features/bookings/filter-bookings'
 import { useTranslation } from 'react-i18next'
+import { Pagination } from 'features/pagination'
+import { PAGE_LIMIT } from 'shared/lib/constants/bookings-constants'
 
 export const BookingsTable = () => {
-	const { sortedBookings, isLoading, error, refetch } = useFilterBookings()
+	const { bookings, isLoading, error, refetch, currentPage } = useFilterBookings()
 	const { t } = useTranslation('bookings')
 
 	if (isLoading) return <Loader />
@@ -26,7 +28,7 @@ export const BookingsTable = () => {
 		)
 	}
 
-	if (!sortedBookings.length) {
+	if (!bookings?.data.length) {
 		return (
 			<div className={style.emptyBookings}>
 				<span>{t('bookings-empty')}</span>
@@ -47,9 +49,12 @@ export const BookingsTable = () => {
 					<div></div>
 				</Table.Header>
 				<Table.Body
-					data={sortedBookings}
+					data={bookings?.data}
 					render={(booking: BookingType) => <BookingRow key={booking.id} booking={booking} />}
 				/>
+				<Table.Footer>
+					<Pagination count={bookings?.length} pageSize={PAGE_LIMIT} currentPage={currentPage} />
+				</Table.Footer>
 			</Table>
 		</>
 	)
