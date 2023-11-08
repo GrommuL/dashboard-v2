@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import { Header } from './table-header/header'
 import { Body } from './table-body/body'
+import { Footer } from './table-footer/footer'
 import style from './table.module.scss'
 
 interface TableProps {
@@ -13,3 +14,4 @@ export const Table = ({ children }: TableProps) => {
 
 Table.Header = Header
 Table.Body = Body
+Table.Footer = Footer
