@@ -18,7 +18,7 @@ export const Filter: FC<FilterProps> = ({ filterField, options }) => {
 
 	const setFilterValue = (value: string) => {
 		searchParams.set(filterField, value)
-
+		searchParams.set('page', '1')
 		setSearchParams(searchParams)
 	}
 
