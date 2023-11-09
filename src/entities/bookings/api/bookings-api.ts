@@ -26,7 +26,7 @@ export const getBookings = async ({
 	return { data, length: Number(headers['x-total-count']) }
 }
 
-export const getBookingByIdWithCabinNameAndGuestInformation = async (id: number) => {
+export const getBookingByIdWithCabinNameAndGuestInformation = async (id: number | string) => {
 	const { data: booking } = await instance.get(`bookings/${id}`)
 	const { data: cabin } = await instance.get(`cabins/${booking.cabinId}`)
 	const { data: guest } = await instance.get(`guests/${booking.guestId}`)
@@ -36,8 +36,15 @@ export const getBookingByIdWithCabinNameAndGuestInformation = async (id: number)
 		cabinName: cabin.name,
 		cabinImage: cabin.image,
 		guestFullName: guest.fullName,
-		guestEmail: guest.email
+		guestEmail: guest.email,
+		guestFlag: guest.countryFlag,
+		guestCountryId: guest.nationalID
 	}
 
 	return bookingWithCabinNameAndGuestInformation
+}
+
+export const getBookingById = async (id: string) => {
+	const { data } = await instance.get(`bookings/${id}`)
+	return data
 }
