@@ -8,6 +8,7 @@ import { Button } from 'shared/ui/buttons/button'
 import { Tag } from 'shared/ui/tag'
 import { BookingDataBox } from './booking-data-box/booking-data-box'
 import { useChangeStatus } from 'features/bookings/change-status'
+import { useDeleteBooking } from 'features/bookings/delete-booking'
 
 const BookingPage = () => {
 	const params = useParams()
@@ -15,6 +16,7 @@ const BookingPage = () => {
 	const { handleChangeStatusToCheckedIn, handleChangeStatusToCheckedOut } = useChangeStatus(
 		params.id
 	)
+	const { handleDeleteBooking } = useDeleteBooking(params.id)
 	const { data: booking, isLoading } = useQuery({
 		queryKey: ['booking', params.id],
 		queryFn: () => getBookingByIdWithCabinNameAndGuestInformation(params.id)
@@ -36,7 +38,11 @@ const BookingPage = () => {
 			</div>
 			<div className={style.details}>
 				<BookingDataBox booking={booking} />
-				<div>
+				<div className={style.detailsButtons}>
+					<Button
+						size='fixed'
+						onClick={handleDeleteBooking}
+					>{`Delete booking #${booking?.id}`}</Button>
 					{booking.status !== 'checked-in' && booking.status !== 'checked-out' && (
 						<Button
 							size='fixed'
