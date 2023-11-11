@@ -1,7 +1,9 @@
 export {
 	getBookings,
 	getBookingByIdWithCabinNameAndGuestInformation,
-	getBookingById
+	getBookingById,
+	editBookingStatusToCheckedIn,
+	editBookingStatusToCheckedOut
 } from './api/bookings-api'
 export {
 	BookingStatus,
