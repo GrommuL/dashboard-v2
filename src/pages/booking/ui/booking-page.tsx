@@ -9,6 +9,8 @@ import { Tag } from 'shared/ui/tag'
 import { BookingDataBox } from './booking-data-box/booking-data-box'
 import { useChangeStatus } from 'features/bookings/change-status'
 import { useDeleteBooking } from 'features/bookings/delete-booking'
+import { ConfirmDelete } from 'features/confirm-delete'
+import { Modal } from 'shared/ui/modal'
 
 const BookingPage = () => {
 	const params = useParams()
@@ -39,10 +41,22 @@ const BookingPage = () => {
 			<div className={style.details}>
 				<BookingDataBox booking={booking} />
 				<div className={style.detailsButtons}>
-					<Button
-						size='fixed'
-						onClick={handleDeleteBooking}
-					>{`Delete booking #${booking?.id}`}</Button>
+					<Modal>
+						<Modal.Open opens='delete-booking'>
+							<Button
+								size='fixed'
+								onClick={handleDeleteBooking}
+							>{`Delete booking #${booking?.id}`}</Button>
+						</Modal.Open>
+						<Modal.Window name='delete-booking'>
+							<ConfirmDelete
+								deleteName={`Booking #${booking?.id}`}
+								disabled={false}
+								onConfirm={handleDeleteBooking}
+							/>
+						</Modal.Window>
+					</Modal>
+
 					{booking.status !== 'checked-in' && booking.status !== 'checked-out' && (
 						<Button
 							size='fixed'
