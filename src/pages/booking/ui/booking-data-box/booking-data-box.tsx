@@ -27,7 +27,6 @@ export const BookingDataBox = ({
 						{booking.numNights} nights in Cabin <span>{booking.cabinName}</span>
 					</p>
 				</div>
-
 				<p>
 					{format(new Date(booking.startDate), 'EEE, MMM dd yyyy')} (
 					{isToday(new Date(booking.startDate))
@@ -75,7 +74,6 @@ export const BookingDataBox = ({
 						</div>
 						<div>
 							{formatCurrency(booking.totalPrice)}
-
 							{booking.hasBreakfast &&
 								` (${formatCurrency(booking.cabinPrice)} cabin + ${formatCurrency(
 									booking.extraPrice
