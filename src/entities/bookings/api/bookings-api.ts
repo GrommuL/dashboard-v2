@@ -48,3 +48,13 @@ export const getBookingById = async (id: string) => {
 	const { data } = await instance.get(`bookings/${id}`)
 	return data
 }
+
+export const editBookingStatusToCheckedIn = async (bookingId: string | number) => {
+	const { data } = await instance.patch(`bookings/${bookingId}`, { status: 'checked-in' })
+	return data
+}
+
+export const editBookingStatusToCheckedOut = async (bookingId: string | number) => {
+	const { data } = await instance.patch(`bookings/${bookingId}`, { status: 'checked-out' })
+	return data
+}
