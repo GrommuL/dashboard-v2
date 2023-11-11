@@ -7,10 +7,14 @@ import { RoutePath } from 'shared/config/route-config'
 import { Button } from 'shared/ui/buttons/button'
 import { Tag } from 'shared/ui/tag'
 import { BookingDataBox } from './booking-data-box/booking-data-box'
+import { useChangeStatus } from 'features/bookings/change-status'
 
 const BookingPage = () => {
 	const params = useParams()
 	const navigate = useNavigate()
+	const { handleChangeStatusToCheckedIn, handleChangeStatusToCheckedOut } = useChangeStatus(
+		params.id
+	)
 	const { data: booking, isLoading } = useQuery({
 		queryKey: ['booking', params.id],
 		queryFn: () => getBookingByIdWithCabinNameAndGuestInformation(params.id)
@@ -30,7 +34,25 @@ const BookingPage = () => {
 					&larr; Back
 				</Button>
 			</div>
-			<BookingDataBox booking={booking} />
+			<div className={style.details}>
+				<BookingDataBox booking={booking} />
+				<div>
+					{booking.status !== 'checked-in' && booking.status !== 'checked-out' && (
+						<Button
+							size='fixed'
+							variant='secondary'
+							onClick={handleChangeStatusToCheckedIn}
+						>{`Check in booking #${booking?.id}`}</Button>
+					)}
+					{booking.status === 'checked-in' && (
+						<Button
+							size='fixed'
+							variant='secondary'
+							onClick={handleChangeStatusToCheckedOut}
+						>{`Check out booking #${booking?.id}`}</Button>
+					)}
+				</div>
+			</div>
 		</>
 	)
 }
