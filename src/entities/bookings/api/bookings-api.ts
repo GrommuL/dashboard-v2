@@ -58,3 +58,8 @@ export const editBookingStatusToCheckedOut = async (bookingId: string | number) 
 	const { data } = await instance.patch(`bookings/${bookingId}`, { status: 'checked-out' })
 	return data
 }
+
+export const deleteBooking = async (bookingId: string | number) => {
+	const { data } = await instance.delete(`bookings/${bookingId}`)
+	return data
+}
