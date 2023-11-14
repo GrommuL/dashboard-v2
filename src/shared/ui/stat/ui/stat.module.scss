@@ -1,0 +1,37 @@
+.stat {
+	background-color: var(--notification-bg-color);
+	border: 1px solid var(--header-border-color);
+	border-radius: 24px;
+
+	padding: 20px;
+	display: grid;
+	grid-template-columns: 70px 1fr;
+	grid-template-rows: auto auto;
+	column-gap: 10px;
+	row-gap: 5px;
+	max-width: 300px;
+}
+.icon {
+	grid-row: 1 / -1;
+	width: 50px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 30px;
+	color: var(--white);
+}
+.title {
+	align-self: end;
+	font-size: 20px;
+	text-transform: uppercase;
+	letter-spacing: 0.4px;
+	font-weight: 600;
+}
+
+.value {
+	font-size: 30px;
+	line-height: 1;
+	font-weight: 500;
+}
