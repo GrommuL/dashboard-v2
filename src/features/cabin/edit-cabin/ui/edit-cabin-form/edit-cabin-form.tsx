@@ -1,12 +1,9 @@
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useQueryClient, useMutation } from '@tanstack/react-query'
-import { CabinType, editCabin, useCreateCabinSchema } from 'entities/cabins'
-import { useForm, SubmitHandler } from 'react-hook-form'
-import toast from 'react-hot-toast'
+import { CabinType } from 'entities/cabins'
 import { Button } from 'shared/ui/buttons/button'
 import { Input, TextArea } from 'shared/ui/inputs'
 import style from './edit-cabin-form.module.scss'
 import { useTranslation } from 'react-i18next'
+import { useEditCabin } from '../../lib/use-edit-cabin'
 
 interface EditCabinFormProps {
 	onCloseModal?: () => void
@@ -15,40 +12,7 @@ interface EditCabinFormProps {
 
 export const EditCabinForm = ({ onCloseModal, editToCabin }: EditCabinFormProps) => {
 	const { t } = useTranslation('cabins')
-	const { createCabinSchema } = useCreateCabinSchema()
-	const {
-		register,
-		formState: { errors },
-		handleSubmit,
-		reset
-	} = useForm<CabinType>({
-		mode: 'onBlur',
-		resolver: zodResolver(createCabinSchema)
-	})
-	const queryClient = useQueryClient()
-
-	const { mutate: editCabinFromForm } = useMutation({
-		mutationKey: ['cabins'],
-		mutationFn: editCabin,
-		onSuccess: () => {
-			toast.success(t('form.edit-success'))
-			reset()
-			onCloseModal()
-			queryClient.invalidateQueries({
-				queryKey: ['cabins']
-			})
-		},
-		onError: () => {
-			toast.error(t('form.edit-error'))
-		}
-	})
-
-	const onSubmit: SubmitHandler<CabinType> = (data) => {
-		const cabin = { ...data }
-		const id = editToCabin?.id
-
-		editCabinFromForm({ cabin, id })
-	}
+	const { errors, handleSubmit, register, onSubmit } = useEditCabin(onCloseModal, editToCabin)
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className={style.form}>
