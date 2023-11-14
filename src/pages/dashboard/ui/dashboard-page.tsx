@@ -10,12 +10,12 @@ const DashboardPage = () => {
 		queryKey: ['bookings'],
 		queryFn: getAllBookings
 	})
-	const sales = bookings?.reduce((acc: number, item: BookingType) => {
+	const sales = bookings?.reduce((acc, item) => {
 		acc = acc + item.totalPrice
 		return acc
 	}, 0)
 
-	const checkins = bookings?.filter((item: BookingType) => item.status === 'checked-in')?.length
+	const checkins = bookings?.filter((item) => item.status === 'checked-in')?.length
 
 	return (
 		<div className={style.stats}>
