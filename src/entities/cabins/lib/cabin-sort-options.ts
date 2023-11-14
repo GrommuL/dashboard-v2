@@ -1,4 +1,6 @@
-export const cabinSortOptions = [
+import { SortType } from 'shared/lib/types/sort-type'
+
+export const cabinSortOptions: SortType[] = [
 	{ value: 'name-asc', label_en: 'Sort by name (A-Z)', label_ru: 'По названию (А-Я)' },
 	{ value: 'name-desc', label_en: 'Sort by name (Z-A)', label_ru: 'По названию (Я-А)' },
 	{
