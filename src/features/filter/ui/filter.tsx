@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import style from './filter.module.scss'
 import { useSearchParams } from 'react-router-dom'
-import { FilterOptionsType } from '../lib/filter-type'
 import { FilterButton } from './filter-button/filter-button'
 import { useTranslation } from 'react-i18next'
+import { FilterOptionsType } from 'shared/lib/types/filter-type'
 
 interface FilterProps {
 	filterField: string
