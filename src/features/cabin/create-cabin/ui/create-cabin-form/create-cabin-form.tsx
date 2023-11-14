@@ -1,12 +1,8 @@
-import toast from 'react-hot-toast'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import { Input, TextArea } from 'shared/ui/inputs'
 import { Button } from 'shared/ui/buttons/button'
-import { CabinType, createCabin, useCreateCabinSchema } from 'entities/cabins'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
 import style from './create-cabin-form.module.scss'
 import { useTranslation } from 'react-i18next'
+import { useCreateCabin } from '../../lib/use-create-cabin'
 
 interface CreateCabinFormProps {
 	onCloseModal?: () => void
@@ -14,41 +10,7 @@ interface CreateCabinFormProps {
 
 export const CreateCabinForm = ({ onCloseModal }: CreateCabinFormProps) => {
 	const { t } = useTranslation('cabins')
-	const { createCabinSchema } = useCreateCabinSchema()
-	const {
-		register,
-		formState: { errors },
-		handleSubmit,
-		reset
-	} = useForm<CabinType>({
-		mode: 'onBlur',
-		resolver: zodResolver(createCabinSchema)
-	})
-	const queryClient = useQueryClient()
-
-	const { mutate: createCabinFromForm } = useMutation({
-		mutationKey: ['cabins'],
-		mutationFn: createCabin,
-		onSuccess: () => {
-			toast.success(t('form.create-success'))
-			reset()
-			onCloseModal()
-			queryClient.invalidateQueries({
-				queryKey: ['cabins']
-			})
-		},
-		onError: () => {
-			toast.error(t('form.create-error'))
-		}
-	})
-
-	const onSubmit: SubmitHandler<CabinType> = (data) => {
-		const formCabinData: CabinType = {
-			...data,
-			createdAt: Date.now()
-		}
-		createCabinFromForm(formCabinData)
-	}
+	const { register, errors, handleSubmit, onSubmit } = useCreateCabin(onCloseModal)
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className={style.form}>
