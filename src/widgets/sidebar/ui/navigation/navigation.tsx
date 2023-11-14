@@ -41,7 +41,11 @@ export const Navigation = () => {
 					</NavLink>
 				</li>
 				<li>
-					<NavLink className={style.navLink} to={RoutePath.users}>
+					<NavLink
+						className={style.navLink}
+						to={RoutePath.users}
+						style={{ pointerEvents: 'none', opacity: '0.5' }}
+					>
 						<div className={style.navIcon}>
 							<HiOutlineUsers size={28} />
 						</div>
