@@ -1,5 +1,7 @@
 import { instance } from 'shared/config/axios-config'
-import { BookingType } from '../lib/bookings-type'
+import { BookingType, BookingWithCabinInformationAndGuestInformation } from '../lib/bookings-type'
+import { getCabinById } from 'entities/cabins'
+import { getGuest } from 'entities/guests'
 
 export const getBookings = async ({
 	status,
@@ -14,52 +16,101 @@ export const getBookings = async ({
 	limit: number
 	currentPage: number
 }): Promise<{ data: BookingType[]; length: number }> => {
-	const { data, headers } = await instance.get('bookings', {
-		params: {
-			status: status === 'all' ? null : status,
-			_sort: sort,
-			_order: order,
-			_limit: limit,
-			_page: currentPage
-		}
-	})
-	return { data, length: Number(headers['x-total-count']) }
+	try {
+		const { data, headers } = await instance.get<BookingType[]>('bookings', {
+			params: {
+				status: status === 'all' ? null : status,
+				_sort: sort,
+				_order: order,
+				_limit: limit,
+				_page: currentPage
+			}
+		})
+		return { data, length: Number(headers['x-total-count']) }
+	} catch (error) {
+		console.log(error)
+		throw new Error('Bookings could not be loaded')
+	}
 }
 
 export const getBookingByIdWithCabinNameAndGuestInformation = async (id: number | string) => {
-	const { data: booking } = await instance.get(`bookings/${id}`)
-	const { data: cabin } = await instance.get(`cabins/${booking.cabinId}`)
-	const { data: guest } = await instance.get(`guests/${booking.guestId}`)
+	try {
+		const { data: booking } = await instance.get<BookingType>(`bookings/${id}`)
 
-	const bookingWithCabinNameAndGuestInformation = {
-		...booking,
-		cabinName: cabin.name,
-		cabinImage: cabin.image,
-		guestFullName: guest.fullName,
-		guestEmail: guest.email,
-		guestFlag: guest.countryFlag,
-		guestCountryId: guest.nationalID
+		const [cabin, guest] = await Promise.all([
+			getCabinById(booking.cabinId),
+			getGuest(booking.guestId)
+		])
+
+		const bookingWithCabinNameAndGuestInformation = {
+			...booking,
+			cabinName: cabin.name,
+			cabinImage: cabin.image,
+			guestFullName: guest.fullName,
+			guestEmail: guest.email,
+			guestFlag: guest.countryFlag,
+			guestCountryId: guest.nationalID
+		}
+
+		return bookingWithCabinNameAndGuestInformation
+	} catch (error) {
+		console.log(error)
+		throw new Error('Booking could not be loaded')
 	}
-
-	return bookingWithCabinNameAndGuestInformation
 }
 
-export const getBookingById = async (id: string) => {
-	const { data } = await instance.get(`bookings/${id}`)
-	return data
+export const getBookingById = async (id: string | number) => {
+	try {
+		const { data } = await instance.get<BookingType>(`bookings/${id}`)
+		return data
+	} catch (error) {
+		console.log(error)
+		throw new Error('Booking could not be loaded')
+	}
+}
+
+export const getAllBookings = async () => {
+	try {
+		const { data } = await instance.get<BookingType[]>('bookings')
+		return data
+	} catch (error) {
+		console.log(error)
+		throw new Error('Bookings could not be loaded')
+	}
 }
 
 export const editBookingStatusToCheckedIn = async (bookingId: string | number) => {
-	const { data } = await instance.patch(`bookings/${bookingId}`, { status: 'checked-in' })
-	return data
+	try {
+		const { data } = await instance.patch<BookingWithCabinInformationAndGuestInformation>(
+			`bookings/${bookingId}`,
+			{ status: 'checked-in' }
+		)
+		return data
+	} catch (error) {
+		console.log(error)
+		throw new Error('Booking with changed status to checked in could not be loaded')
+	}
 }
 
 export const editBookingStatusToCheckedOut = async (bookingId: string | number) => {
-	const { data } = await instance.patch(`bookings/${bookingId}`, { status: 'checked-out' })
-	return data
+	try {
+		const { data } = await instance.patch<BookingWithCabinInformationAndGuestInformation>(
+			`bookings/${bookingId}`,
+			{ status: 'checked-out' }
+		)
+		return data
+	} catch (error) {
+		console.log(error)
+		throw new Error('Booking with changed status to checked out could not be loaded')
+	}
 }
 
 export const deleteBooking = async (bookingId: string | number) => {
-	const { data } = await instance.delete(`bookings/${bookingId}`)
-	return data
+	try {
+		const { data } = await instance.delete<BookingType>(`bookings/${bookingId}`)
+		return data
+	} catch (error) {
+		console.log(error)
+		throw new Error('Can not delete booking')
+	}
 }
