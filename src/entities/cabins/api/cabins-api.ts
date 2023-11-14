@@ -1,9 +1,9 @@
 import { instance } from 'shared/config/axios-config'
 import { CabinType } from '../types/cabins-type'
 
-export const getCabins = async (): Promise<CabinType[]> => {
+export const getCabins = async () => {
 	try {
-		const { data } = await instance.get('cabins')
+		const { data } = await instance.get<CabinType[]>('cabins')
 		return data
 	} catch (error) {
 		console.log(error)
@@ -13,7 +13,7 @@ export const getCabins = async (): Promise<CabinType[]> => {
 
 export const getCabinById = async (id: number) => {
 	try {
-		const { data } = await instance.get(`cabins/${id}`)
+		const { data } = await instance.get<CabinType>(`cabins/${id}`)
 		return data
 	} catch (error) {
 		console.log(error)
@@ -23,8 +23,7 @@ export const getCabinById = async (id: number) => {
 
 export const deleteCabin = async (id: number) => {
 	try {
-		const { data } = await instance.delete(`cabins/${id}`)
-		return data
+		await instance.delete(`cabins/${id}`)
 	} catch (error) {
 		console.log(error)
 		throw new Error('Cabin could not be deleted')
@@ -33,8 +32,7 @@ export const deleteCabin = async (id: number) => {
 
 export const createCabin = async (cabin: CabinType) => {
 	try {
-		const { data } = await instance.post('cabins', cabin)
-		return data
+		await instance.post('cabins', cabin)
 	} catch (error) {
 		console.log(error)
 		throw new Error('Cabin could not be created')
@@ -43,8 +41,7 @@ export const createCabin = async (cabin: CabinType) => {
 
 export const editCabin = async ({ cabin, id }: { cabin: CabinType; id: number }) => {
 	try {
-		const { data } = await instance.patch(`cabins/${id}`, cabin)
-		return data
+		await instance.patch(`cabins/${id}`, cabin)
 	} catch (error) {
 		console.log(error)
 		throw new Error('Cabin could not be edited')
