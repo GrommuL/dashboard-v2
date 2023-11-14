@@ -1,4 +1,6 @@
-export const bookingsSortOptions = [
+import { SortType } from 'shared/lib/types/sort-type'
+
+export const bookingsSortOptions: SortType[] = [
 	{
 		value: 'totalPrice-asc',
 		label_en: 'Sort by amount (low first)',

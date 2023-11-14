@@ -4,7 +4,8 @@ export {
 	getBookingById,
 	editBookingStatusToCheckedIn,
 	editBookingStatusToCheckedOut,
-	deleteBooking
+	deleteBooking,
+	getAllBookings
 } from './api/bookings-api'
 export {
 	BookingStatus,
