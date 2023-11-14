@@ -62,33 +62,8 @@ export const useFilterBookings = () => {
 		})
 	}
 
-	// const filteredBookings = bookings?.data?.filter((booking) => {
-	// 	switch (filterValue) {
-	// 		case 'all':
-	// 			return booking
-	// 		case 'unconfirmed':
-	// 			return booking.status === 'unconfirmed'
-
-	// 		case 'confirmed':
-	// 			return booking.status === 'confirmed'
-	// 		case 'checked-in':
-	// 			return booking.status === 'checked-in'
-	// 		case 'checked-out':
-	// 			return booking.status === 'checked-out'
-	// 	}
-	// })
-
-	// const modifier = direction === 'asc' ? 1 : -1
-	// const sortedBookings =
-	// 	filteredBookings &&
-	// 	filteredBookings?.sort((a, b) => {
-	// 		return (a[field] - b[field]) * modifier
-	// 	})
-
 	return {
 		bookings,
-		// filteredBookings,
-		// sortedBookings,
 		isLoading,
 		error,
 		refetch,
