@@ -1,4 +1,4 @@
-import { FilterOptionsType } from 'features/filter'
+import { FilterOptionsType } from 'shared/lib/types/filter-type'
 
 export const bookingsFilterOptions: FilterOptionsType[] = [
 	{
