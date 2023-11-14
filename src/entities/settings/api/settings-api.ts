@@ -2,8 +2,13 @@ import { instance } from 'shared/config/axios-config'
 import { SettingsType } from '../lib/setttings-type'
 
 export const getSettings = async () => {
-	const { data } = await instance.get('settings')
-	return data
+	try {
+		const { data } = await instance.get<SettingsType[]>('settings')
+		return data
+	} catch (error) {
+		console.log(error)
+		throw new Error('Settings could not be loaded')
+	}
 }
 
 export const editSettings = async ({
@@ -13,6 +18,11 @@ export const editSettings = async ({
 	settingsId: number | string
 	settingsData: SettingsType
 }) => {
-	const { data } = await instance.patch(`settings/${settingsId}`, settingsData)
-	return data
+	try {
+		const { data } = await instance.patch<SettingsType>(`settings/${settingsId}`, settingsData)
+		return data
+	} catch (error) {
+		console.log(error)
+		throw new Error('Can not edit setting')
+	}
 }
