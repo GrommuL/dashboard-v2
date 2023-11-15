@@ -26,5 +26,9 @@
 		"question-second-part": "? Удаление нельзя будет отменить.",
 		"cancel-button": "Отменить",
 		"delete-button": "Удалить"
+	},
+	"pagination": {
+		"next-button": "Следующая",
+		"prev-button": "Предыдущая"
 	}
 }

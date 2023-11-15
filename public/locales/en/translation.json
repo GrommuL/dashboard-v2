@@ -26,5 +26,9 @@
 		"question-second-part": "permanently? This action cannot be undone.",
 		"cancel-button": "Cancel",
 		"delete-button": "Delete"
+	},
+	"pagination": {
+		"next-button": "Next",
+		"prev-button": "Previous"
 	}
 }
