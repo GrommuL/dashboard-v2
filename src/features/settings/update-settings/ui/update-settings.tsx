@@ -3,8 +3,10 @@ import { useEditSettings } from '../lib/use-edit-settings'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SettingsType, settingsSchema } from 'entities/settings'
 import { SettingsForm } from './settings-form/settings-form'
+import { useTranslation } from 'react-i18next'
 
 export const UpdateSettings = () => {
+	const { t } = useTranslation('settings')
 	const { onSubmit, settingItem } = useEditSettings()
 
 	const {
@@ -19,7 +21,7 @@ export const UpdateSettings = () => {
 	return (
 		<div>
 			<SettingsForm
-				buttonLabel='Edit settings'
+				buttonLabel={t('settings-page.form.button-label')}
 				register={register}
 				errors={errors}
 				settingItem={settingItem}
