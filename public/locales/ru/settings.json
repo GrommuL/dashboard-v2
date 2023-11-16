@@ -1,0 +1,12 @@
+{
+	"settings-page": {
+		"title": "Обновление настроек брони отеля",
+		"form": {
+			"button-label": "Редактировать настроки",
+			"minBookingLength": "Минимальное количество ночей",
+			"maxBookingLength": "Максимальное количество ночей",
+			"maxGuestsPerBooking": "Максимальное количество гостей",
+			"breakfastPrice": "Цена завтрака"
+		}
+	}
+}
