@@ -1,0 +1,12 @@
+{
+	"settings-page": {
+		"title": "Update hotel settings",
+		"form": {
+			"button-label": "Edit settings",
+			"minBookingLength": "Minimum nights/booking",
+			"maxBookingLength": "Maximum nights/booking",
+			"maxGuestsPerBooking": "Maximum guests/booking",
+			"breakfastPrice": "Breakfast price"
+		}
+	}
+}
