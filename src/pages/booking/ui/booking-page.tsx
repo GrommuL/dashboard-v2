@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { getBookingById, getBookingByIdWithCabinNameAndGuestInformation } from 'entities/bookings'
+import { getBookingByIdWithCabinNameAndGuestInformation } from 'entities/bookings'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Loader } from 'shared/ui/loaders'
 import style from './booking-page.module.scss'
@@ -23,7 +23,6 @@ const BookingPage = () => {
 		queryKey: ['booking', params.id],
 		queryFn: () => getBookingByIdWithCabinNameAndGuestInformation(params.id)
 	})
-	console.log(booking)
 
 	if (isLoading) return <Loader />
 
