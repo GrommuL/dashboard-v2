@@ -4,6 +4,7 @@ import style from './settings-form.module.scss'
 import { SettingsType } from 'entities/settings'
 import { Input } from 'shared/ui/inputs'
 import { Button } from 'shared/ui/buttons/button'
+import { useTranslation } from 'react-i18next'
 
 interface SettingsFormProps {
 	register: UseFormRegister<SettingsType>
@@ -22,6 +23,8 @@ export const SettingsForm: FC<SettingsFormProps> = ({
 	buttonLabel,
 	settingItem
 }) => {
+	const { t } = useTranslation('settings')
+
 	return (
 		<form onSubmit={onSubmit} className={style.form}>
 			<Input
@@ -36,7 +39,7 @@ export const SettingsForm: FC<SettingsFormProps> = ({
 					disabled: isLoading
 				}}
 				registerId='minBookingLength'
-				label='Minimum nights/booking'
+				label={t('settings-page.form.minBookingLength')}
 				error={errors.minBookingLength}
 			/>
 			<Input
@@ -51,7 +54,7 @@ export const SettingsForm: FC<SettingsFormProps> = ({
 					disabled: isLoading
 				}}
 				registerId='maxBookingLength'
-				label='Maximum nights/booking'
+				label={t('settings-page.form.maxBookingLength')}
 				error={errors.maxBookingLength}
 			/>
 			<Input
@@ -66,7 +69,7 @@ export const SettingsForm: FC<SettingsFormProps> = ({
 					disabled: isLoading
 				}}
 				registerId='maxGuestsPerBooking'
-				label='Maximum guests/booking'
+				label={t('settings-page.form.maxGuestsPerBooking')}
 				error={errors.maxGuestsPerBooking}
 			/>
 			<Input
@@ -81,7 +84,7 @@ export const SettingsForm: FC<SettingsFormProps> = ({
 					disabled: isLoading
 				}}
 				registerId='breakfastPrice'
-				label='Breakfast price'
+				label={t('settings-page.form.breakfastPrice')}
 				error={errors.breakfastPrice}
 			/>
 
