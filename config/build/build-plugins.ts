@@ -9,6 +9,7 @@ import {
 	HotModuleReplacementPlugin
 } from 'webpack'
 import { BuildOptions } from './types/config'
+import CopyPlugin from 'copy-webpack-plugin'
 
 export const buildPlugins = ({
 	paths,
@@ -29,6 +30,9 @@ export const buildPlugins = ({
 		new DefinePlugin({
 			__IS_DEV__: JSON.stringify(isDev),
 			'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
+		}),
+		new CopyPlugin({
+			patterns: [{ from: paths.locales, to: paths.buildLocales }]
 		})
 	]
 
