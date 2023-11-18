@@ -6,8 +6,12 @@ import { Button } from 'shared/ui/buttons/button'
 import { useMutation } from '@tanstack/react-query'
 import { registerSchema, registerUser } from 'entities/authorization'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
+import { AxiosError } from 'axios'
 
 export const RegisterForm = () => {
+	const navigate = useNavigate()
 	const {
 		register,
 		formState: { errors },
@@ -18,18 +22,27 @@ export const RegisterForm = () => {
 		resolver: zodResolver(registerSchema)
 	})
 
-	const { mutate } = useMutation({
-		mutationFn: registerUser
+	const { mutate, error } = useMutation({
+		mutationKey: ['user'],
+		mutationFn: registerUser,
+		onSuccess: (data) => {
+			navigate('/dashboard')
+			toast.success(`Welcome, ${data.fullName}`)
+		},
+		onError: (err: AxiosError) => err
 	})
 
 	const onSubmit: SubmitHandler<AuthType> = (data) => {
 		mutate(data)
 		reset()
-		console.log(data)
 	}
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className={style.form}>
+			<p>
+				{error?.response.status === 400 &&
+					'The email address is already being used! Please use a different email!'}
+			</p>
 			<Input
 				inputProps={{
 					...register('fullName', {
@@ -64,6 +77,18 @@ export const RegisterForm = () => {
 				registerId='password'
 				label='Password'
 				error={errors.password}
+			/>
+			<Input
+				inputProps={{
+					...register('confirmPassword', {
+						required: true
+					}),
+					placeholder: 'Repeat password',
+					type: 'password'
+				}}
+				registerId='confirmPassword'
+				label='Confirm Password'
+				error={errors.confirmPassword}
 			/>
 			<Button type='submit'>Register</Button>
 		</form>

@@ -1,23 +1,34 @@
+import toast from 'react-hot-toast'
 import { Input } from 'shared/ui/inputs'
-import style from './login-form.module.scss'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { AuthType } from 'entities/authorization/lib/types/auth-type'
 import { Button } from 'shared/ui/buttons/button'
 import { useMutation } from '@tanstack/react-query'
-import { loginUser } from 'entities/authorization'
+import { loginSchema, loginUser } from 'entities/authorization'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useNavigate } from 'react-router-dom'
+import { AxiosError } from 'axios'
+import style from './login-form.module.scss'
 
 export const LoginForm = () => {
+	const navigate = useNavigate()
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
 		reset
 	} = useForm<AuthType>({
-		mode: 'onBlur'
+		mode: 'onBlur',
+		resolver: zodResolver(loginSchema)
 	})
 
-	const { mutate, data } = useMutation({
-		mutationFn: loginUser
+	const { mutate } = useMutation({
+		mutationFn: loginUser,
+		onSuccess: (data) => {
+			navigate('/dashboard')
+			toast.success(`Welcome, ${data.fullName}`)
+		},
+		onError: (err: AxiosError) => err
 	})
 
 	const onSubmit: SubmitHandler<AuthType> = (data) => {
