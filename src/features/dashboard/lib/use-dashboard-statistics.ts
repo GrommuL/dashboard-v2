@@ -11,10 +11,7 @@ export const useDashboardStatistics = () => {
 		queryFn: getAllBookings
 	})
 
-	const sales = bookings?.reduce((acc, item) => {
-		acc = acc + item.totalPrice
-		return acc
-	}, 0)
+	const sales = bookings?.reduce((acc, item) => acc + item.totalPrice, 0)
 
 	const checkins = bookings?.filter((item) => item.status === 'checked-in')?.length
 
