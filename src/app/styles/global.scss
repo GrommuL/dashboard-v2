@@ -44,7 +44,7 @@ body {
 }
 
 input[type='number'] {
-	-moz-appearance: none;
+	-moz-appearance: textfield;
 }
 input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
@@ -65,5 +65,22 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 ::-webkit-scrollbar-thumb:hover {
+	background: var(--blue-500);
+}
+
+::-moz-scrollbar {
+	width: 7px;
+}
+
+::-moz-scrollbar-track {
+	background: transparent;
+}
+
+::-moz-scrollbar-thumb {
+	background: var(--blue-500);
+	border-radius: 150px;
+}
+
+::-moz-scrollbar-thumb:hover {
 	background: var(--blue-500);
 }
