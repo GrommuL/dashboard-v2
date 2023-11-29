@@ -1,0 +1,19 @@
+{
+	"check-in-booking-button-label": "Зарегистрировать бронь",
+	"check-out-booking-button-label": "Закрыть бронь",
+	"booking": "Бронь",
+	"back-button-label": "Назад",
+	"delete-booking": "Удалить бронь",
+	"national-id": "ID Страны",
+	"observations": "Пожелания",
+	"breakfast-included": "Завтрак включен",
+	"yes": "Да",
+	"no": "Нет",
+	"total-price": "Окончательная сумма",
+	"cabin": "аренда дома",
+	"breakfast": "завтрак",
+	"paid": "Оплачено",
+	"will-pay-at-property": "Будет оплачено по прибытию",
+	"booked": "Забронировано",
+	"today": "Сегодня"
+}
