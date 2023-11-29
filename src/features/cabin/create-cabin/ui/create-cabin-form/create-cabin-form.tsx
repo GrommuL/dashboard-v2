@@ -38,7 +38,7 @@ export const CreateCabinForm = ({ onCloseModal }: CreateCabinFormProps) => {
 					...register('maxCapacity', {
 						required: true,
 						valueAsNumber: true,
-						validate: (value) => typeof value === 'number' && value >= 0
+						validate: (value: unknown) => typeof value === 'number' && value >= 0
 					}),
 					placeholder: `${t('form.inputs.max-capacity-placeholder')}`,
 					type: 'number'
@@ -52,7 +52,7 @@ export const CreateCabinForm = ({ onCloseModal }: CreateCabinFormProps) => {
 					...register('regularPrice', {
 						required: true,
 						valueAsNumber: true,
-						validate: (value) => typeof value === 'number' && value >= 0
+						validate: (value: unknown) => typeof value === 'number' && value >= 0
 					}),
 					placeholder: `${t('form.inputs.regular-price-placeholder')}`,
 					type: 'number'
@@ -66,7 +66,7 @@ export const CreateCabinForm = ({ onCloseModal }: CreateCabinFormProps) => {
 					...register('discount', {
 						required: true,
 						valueAsNumber: true,
-						validate: (value) => typeof value === 'number' && value >= 0
+						validate: (value: unknown) => typeof value === 'number' && value >= 0
 					}),
 					placeholder: `${t('form.inputs.discount-placeholder')}`,
 					type: 'number'

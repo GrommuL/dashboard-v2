@@ -4,6 +4,7 @@ import toast from 'react-hot-toast'
 
 export const useChangeStatus = (bookingId: string | number) => {
 	const queryClient = useQueryClient()
+
 	const { mutate: changeStatusToCheckedIn } = useMutation({
 		mutationKey: ['booking', bookingId],
 		mutationFn: (bookingId: string | number) => editBookingStatusToCheckedIn(bookingId),
@@ -20,6 +21,7 @@ export const useChangeStatus = (bookingId: string | number) => {
 			toast.error('Failed to change status')
 		}
 	})
+
 	const { mutate: changeStatusToCheckedOut } = useMutation({
 		mutationKey: ['booking', bookingId],
 		mutationFn: (bookingId: string | number) => editBookingStatusToCheckedOut(bookingId),
@@ -36,9 +38,11 @@ export const useChangeStatus = (bookingId: string | number) => {
 			toast.error('Failed to change status')
 		}
 	})
+
 	const handleChangeStatusToCheckedIn = () => {
 		changeStatusToCheckedIn(bookingId)
 	}
+
 	const handleChangeStatusToCheckedOut = () => {
 		changeStatusToCheckedOut(bookingId)
 	}
