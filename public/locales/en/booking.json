@@ -1,0 +1,19 @@
+{
+	"check-in-booking-button-label": "Check in booking",
+	"check-out-booking-button-label": "Check out booking",
+	"booking": "Booking",
+	"back-button-label": "Back",
+	"delete-booking": "Delete booking",
+	"national-id": "National ID",
+	"observations": "Observations",
+	"breakfast-included": "Breakfast included",
+	"yes": "Yes",
+	"no": "No",
+	"total-price": "Total price",
+	"cabin": "cabin",
+	"breakfast": "breakfast",
+	"paid": "Paid",
+	"will-pay-at-property": "Will pay at property",
+	"booked": "Booked",
+	"today": "Today"
+}
