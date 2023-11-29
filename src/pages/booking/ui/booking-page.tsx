@@ -11,8 +11,10 @@ import { useChangeStatus } from 'features/bookings/change-status'
 import { useDeleteBooking } from 'features/bookings/delete-booking'
 import { ConfirmDelete } from 'features/confirm-delete'
 import { Modal } from 'shared/ui/modal'
+import { useTranslation } from 'react-i18next'
 
 const BookingPage = () => {
+	const { t } = useTranslation('booking')
 	const params = useParams()
 	const navigate = useNavigate()
 	const { handleChangeStatusToCheckedIn, handleChangeStatusToCheckedOut } = useChangeStatus(
@@ -30,11 +32,13 @@ const BookingPage = () => {
 		<>
 			<div className={style.booking}>
 				<header className={style.header}>
-					<h1>Booking #{booking?.id}</h1>
+					<h1>
+						{t('booking')} #{booking?.id}
+					</h1>
 					{booking && <Tag label={booking?.status} />}
 				</header>
 				<Button variant='empty' onClick={() => navigate(RoutePath.bookings)}>
-					&larr; Back
+					&larr; {t('back-button-label')}
 				</Button>
 			</div>
 			<div className={style.details}>
@@ -42,14 +46,13 @@ const BookingPage = () => {
 				<div className={style.detailsButtons}>
 					<Modal>
 						<Modal.Open opens='delete-booking'>
-							<Button
-								size='fixed'
-								onClick={handleDeleteBooking}
-							>{`Delete booking #${booking?.id}`}</Button>
+							<Button size='fixed' onClick={handleDeleteBooking}>{`${t(
+								'delete-booking'
+							)} #${booking?.id}`}</Button>
 						</Modal.Open>
 						<Modal.Window name='delete-booking'>
 							<ConfirmDelete
-								deleteName={`Booking #${booking?.id}`}
+								deleteName={`${t('booking')} #${booking?.id}`}
 								disabled={false}
 								onConfirm={handleDeleteBooking}
 							/>
@@ -57,18 +60,14 @@ const BookingPage = () => {
 					</Modal>
 
 					{booking.status !== 'checked-in' && booking.status !== 'checked-out' && (
-						<Button
-							size='fixed'
-							variant='secondary'
-							onClick={handleChangeStatusToCheckedIn}
-						>{`Check in booking #${booking?.id}`}</Button>
+						<Button size='fixed' variant='secondary' onClick={handleChangeStatusToCheckedIn}>{`${t(
+							'check-in-booking-button-label'
+						)} #${booking?.id}`}</Button>
 					)}
 					{booking.status === 'checked-in' && (
-						<Button
-							size='fixed'
-							variant='secondary'
-							onClick={handleChangeStatusToCheckedOut}
-						>{`Check out booking #${booking?.id}`}</Button>
+						<Button size='fixed' variant='secondary' onClick={handleChangeStatusToCheckedOut}>{`${t(
+							'check-out-booking-button-label'
+						)} #${booking?.id}`}</Button>
 					)}
 				</div>
 			</div>
