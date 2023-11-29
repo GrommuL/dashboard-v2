@@ -73,7 +73,7 @@ Backend:
 Запуск проекта:
 
 ```bash
-  npm run start
+  npm run dev
 ```
 
 ## Environment Variables
