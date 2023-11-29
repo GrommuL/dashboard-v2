@@ -12,21 +12,35 @@ import {
 	YAxis
 } from 'recharts'
 import { useDashboardStatistics } from 'features/dashboard'
+import { useTranslation } from 'react-i18next'
 
 const DashboardPage = () => {
 	const { bookings, data, colors, sales, checkins } = useDashboardStatistics()
+	const { t } = useTranslation('dashboard')
+
+	console.log(bookings)
 
 	return (
 		<div className={style.dashboard}>
 			<div className={style.stats}>
 				<Stat
-					title='Bookings'
+					title={t('stats.bookings')}
 					color='var(--blue-300)'
 					icon={HiOutlineBriefcase}
 					value={bookings?.length}
 				/>
-				<Stat title='Sales' color='green' icon={HiOutlineBanknotes} value={formatCurrency(sales)} />
-				<Stat title='Check ins' color='indigo' icon={HiOutlineCalendarDays} value={checkins} />
+				<Stat
+					title={t('stats.sales')}
+					color='green'
+					icon={HiOutlineBanknotes}
+					value={formatCurrency(sales)}
+				/>
+				<Stat
+					title={t('stats.check-ins')}
+					color='indigo'
+					icon={HiOutlineCalendarDays}
+					value={checkins}
+				/>
 			</div>
 
 			<ResponsiveContainer height={300} width='100%'>
