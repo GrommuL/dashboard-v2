@@ -3,16 +3,23 @@ import { useQuery } from '@tanstack/react-query'
 import { format, isToday } from 'date-fns'
 import { HiOutlineHomeModern } from 'react-icons/hi2'
 import { BookingType, getBookingByIdWithCabinNameAndGuestInformation } from 'entities/bookings'
-import { formatDistanceFromNow } from 'shared/lib/format-distance-from-now'
 import { formatCurrency } from 'shared/lib/format-currency'
 import { Tag } from 'shared/ui/tag'
 import style from './booking-row.module.scss'
+import { enUS, ru } from 'date-fns/locale'
+import { useTranslation } from 'react-i18next'
+import { useFormatDistanceFromNow } from 'shared/lib/format-distance-from-now'
+import { formatNightsStay } from 'shared/lib/format-nights-stay'
 
 export const BookingRow = ({ booking }: { booking: BookingType }) => {
+	const { i18n } = useTranslation()
+	const { formatDistanceFromNow } = useFormatDistanceFromNow()
 	const { data: bookingInfo } = useQuery({
 		queryKey: ['bookingWithCabinNameAndGuestInformation', booking.id],
 		queryFn: () => getBookingByIdWithCabinNameAndGuestInformation(booking.id)
 	})
+
+	const translatedToday = i18n.language === 'en' ? 'Today' : 'Сегодня'
 
 	return (
 		<>
@@ -34,13 +41,19 @@ export const BookingRow = ({ booking }: { booking: BookingType }) => {
 				<div className={style.date}>
 					<span className={style.isToday}>
 						{isToday(new Date(booking.startDate))
-							? 'Today'
+							? translatedToday
 							: formatDistanceFromNow(booking.startDate)}{' '}
-						&rarr; {booking.numNights} night stay
+						&rarr; {booking.numNights}{' '}
+						{i18n.language === 'en' ? 'night stay' : formatNightsStay(booking.numNights)}
 					</span>
 					<span className={style.reservation}>
-						{format(new Date(booking?.startDate), 'MMM dd yyyy')} &mdash;{' '}
-						{format(new Date(booking?.endDate), 'MMM dd yyyy')}
+						{format(new Date(booking?.startDate), 'MMM dd yyyy', {
+							locale: i18n.language === 'en' ? enUS : ru
+						})}{' '}
+						&mdash;{' '}
+						{format(new Date(booking?.endDate), 'MMM dd yyyy', {
+							locale: i18n.language === 'en' ? enUS : ru
+						})}
 					</span>
 				</div>
 				<Tag label={booking.status} />
