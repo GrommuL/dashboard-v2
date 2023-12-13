@@ -21,7 +21,7 @@ export const getBookings = async ({
 	currentPage: number
 }): Promise<{ data: BookingType[]; length: number }> => {
 	try {
-		const { data, headers } = await instance.get<BookingResponse>('bookings', {
+		const { data } = await instance.get<BookingResponse>('bookings', {
 			params: {
 				status: status === 'all' ? null : status,
 				sortBy: order === 'asc' ? sort : `-${sort}`,
@@ -29,8 +29,8 @@ export const getBookings = async ({
 				page: currentPage
 			}
 		})
-		console.log(data)
-		return { data: data.items, length: Number(headers['x-total-count']) }
+
+		return { data: data.items, length: data.meta.total_items }
 	} catch (error) {
 		console.log(error)
 		throw new Error('Bookings could not be loaded')
