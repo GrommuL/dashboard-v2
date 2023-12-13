@@ -1,3 +1,16 @@
+export type BookingResponse = {
+	items: BookingType[]
+	meta: BookingResponseMeta
+}
+
+export type BookingResponseMeta = {
+	current_page: number
+	per_page: number
+	remaining_count: number
+	total_items: number
+	total_pages: number
+}
+
 export type BookingType = {
 	id?: number
 	startDate: string

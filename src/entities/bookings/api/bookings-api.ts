@@ -1,5 +1,9 @@
 import { instance } from 'shared/config/axios-config'
-import { BookingType, BookingWithCabinInformationAndGuestInformation } from '../lib/bookings-type'
+import {
+	BookingResponse,
+	BookingType,
+	BookingWithCabinInformationAndGuestInformation
+} from '../lib/bookings-type'
 import { getCabinById } from 'entities/cabins'
 import { getGuest } from 'entities/guests'
 
@@ -17,16 +21,16 @@ export const getBookings = async ({
 	currentPage: number
 }): Promise<{ data: BookingType[]; length: number }> => {
 	try {
-		const { data, headers } = await instance.get<BookingType[]>('bookings', {
+		const { data, headers } = await instance.get<BookingResponse>('bookings', {
 			params: {
 				status: status === 'all' ? null : status,
-				_sort: sort,
-				_order: order,
-				_limit: limit,
-				_page: currentPage
+				sortBy: order === 'asc' ? sort : `-${sort}`,
+				limit: limit,
+				page: currentPage
 			}
 		})
-		return { data, length: Number(headers['x-total-count']) }
+		console.log(data)
+		return { data: data.items, length: Number(headers['x-total-count']) }
 	} catch (error) {
 		console.log(error)
 		throw new Error('Bookings could not be loaded')
