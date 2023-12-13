@@ -6,7 +6,7 @@ import { ThemeContext, ThemeVariants } from 'shared/config/theme-config'
 
 export const useDashboardStatistics = () => {
 	const { theme } = useContext(ThemeContext)
-	const { data: bookings } = useQuery({
+	const { data: bookings, isLoading } = useQuery({
 		queryKey: ['bookings'],
 		queryFn: getAllBookings
 	})
@@ -52,6 +52,7 @@ export const useDashboardStatistics = () => {
 		sales,
 		checkins,
 		colors,
-		data
+		data,
+		isLoading
 	}
 }

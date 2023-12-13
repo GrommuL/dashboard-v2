@@ -13,12 +13,15 @@ import {
 } from 'recharts'
 import { useDashboardStatistics } from 'features/dashboard'
 import { useTranslation } from 'react-i18next'
+import { Loader } from 'shared/ui/loaders'
 
 const DashboardPage = () => {
-	const { bookings, data, colors, sales, checkins } = useDashboardStatistics()
+	const { bookings, data, colors, sales, checkins, isLoading } = useDashboardStatistics()
 	const { t } = useTranslation('dashboard')
 
-	console.log(bookings)
+	if (isLoading) {
+		return <Loader />
+	}
 
 	return (
 		<div className={style.dashboard}>
