@@ -4,7 +4,7 @@ interface BodyProps {
 }
 
 export const Body = ({ data, render }: BodyProps) => {
-	if (!data.length) return
+	if (!data?.length) return
 
 	return data.map(render)
 }
