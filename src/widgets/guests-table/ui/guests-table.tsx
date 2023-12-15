@@ -4,12 +4,15 @@ import { getGuests } from 'entities/guests/api/guests-api'
 import { Button } from 'shared/ui/buttons/button'
 import { Table } from 'shared/ui/table'
 import { GuestsTableRow } from './guests-table-row/guests-table-row'
+import { Loader } from 'shared/ui/loaders'
 
 export const GuestsTable = () => {
 	const { data: guests, isLoading } = useQuery({
 		queryKey: ['guests'],
 		queryFn: () => getGuests()
 	})
+
+	if (isLoading) return <Loader />
 
 	return (
 		<>
