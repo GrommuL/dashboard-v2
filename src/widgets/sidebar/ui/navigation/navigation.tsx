@@ -43,13 +43,13 @@ export const Navigation = () => {
 				<li>
 					<NavLink
 						className={style.navLink}
-						to={RoutePath.users}
-						style={{ pointerEvents: 'none', opacity: '0.5' }}
+						to={RoutePath.guests}
+						// style={{ pointerEvents: 'none', opacity: '0.5' }}
 					>
 						<div className={style.navIcon}>
 							<HiOutlineUsers size={28} />
 						</div>
-						<span>{t('dashboard.users')}</span>
+						<span>{t('dashboard.guests')}</span>
 					</NavLink>
 				</li>
 				<li>

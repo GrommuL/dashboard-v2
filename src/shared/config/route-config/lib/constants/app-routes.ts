@@ -4,7 +4,7 @@ export enum AppRoutes {
 	BOOKINGS = 'bookings',
 	BOOKING = 'booking',
 	CABINS = 'cabins',
-	USERS = 'users',
+	GUESTS = 'guests',
 	SETTINGS = 'settings',
 	ACCOUNT = 'account'
 }
