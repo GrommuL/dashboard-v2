@@ -1,0 +1,28 @@
+.guestsRow {
+	display: grid;
+	grid-template-columns: 2fr 1.8fr 1.8fr 1fr 1fr;
+	column-gap: 32px;
+	align-items: center;
+	padding: 15px 38px;
+	color: inherit;
+	transition: all 0.3s ease-in;
+
+	&:not(:last-child) {
+		border-bottom: 1px solid var(--header-border-color);
+	}
+
+	&:hover {
+		background: var(--secondary-blue);
+	}
+}
+
+.guestInfo {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.email {
+	font-size: 18px;
+	color: var(--booking-text-color);
+}
