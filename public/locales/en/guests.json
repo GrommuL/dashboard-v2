@@ -1,0 +1,10 @@
+{
+	"title": "Guests",
+	"table": {
+		"guest": "Guest",
+		"email": "Email",
+		"country": "Country",
+		"nationalId": "National ID",
+		"add-guest": "Add guest"
+	}
+}
