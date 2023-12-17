@@ -26,3 +26,9 @@
 	font-size: 18px;
 	color: var(--booking-text-color);
 }
+
+.guestsButtons {
+	display: flex;
+	align-items: center;
+	justify-content: end;
+}
