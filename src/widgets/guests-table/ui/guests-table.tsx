@@ -1,11 +1,14 @@
 import { useQuery } from '@tanstack/react-query'
 import { GuestType } from 'entities/guests'
 import { getGuests } from 'entities/guests/api/guests-api'
-import { Button } from 'shared/ui/buttons/button'
 import { Table } from 'shared/ui/table'
 import { GuestsTableRow } from './guests-table-row/guests-table-row'
 import { Loader } from 'shared/ui/loaders'
 import { useTranslation } from 'react-i18next'
+import { Modal } from 'shared/ui/modal'
+import style from './guests-table.module.scss'
+import { Button } from 'shared/ui/buttons/button'
+import { CreateGuestForm } from 'features/guests/create-guest'
 
 export const GuestsTable = () => {
 	const { t } = useTranslation('guests')
@@ -32,10 +35,17 @@ export const GuestsTable = () => {
 					data={guests}
 					render={(guest: GuestType) => <GuestsTableRow key={guest.id} guest={guest} />}
 				/>
-				<Table.Footer>
-					<Button>{t('table.add-guest')}</Button>
-				</Table.Footer>
 			</Table>
+			<div className={style.createGuest}>
+				<Modal>
+					<Modal.Open opens='guest-form'>
+						<Button>{t('table.add-guest')}</Button>
+					</Modal.Open>
+					<Modal.Window name='guest-form'>
+						<CreateGuestForm />
+					</Modal.Window>
+				</Modal>
+			</div>
 		</>
 	)
 }
